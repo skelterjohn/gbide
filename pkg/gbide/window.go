@@ -22,6 +22,7 @@ func init() {
 }
 
 func LaunchBrowser(url string) (err os.Error) {
+	defer fmt.Println(err)
 	if runtime.GOOS == "darwin" {
 		fmt.Println([]string{"open", url})
 		_, err = os.StartProcess("/usr/bin/open", []string{"open", url}, nil, ".", nil)
@@ -29,8 +30,10 @@ func LaunchBrowser(url string) (err os.Error) {
 	if runtime.GOOS == "linux" {
 		var ffp string
 		ffp, err = exec.LookPath("firefox")
-		fmt.Println([]string{"firefox", url})
-		_, err = os.StartProcess(ffp, []string{"firefox", url}, nil, ".", nil)
+		if err == nil {
+			fmt.Println([]string{"firefox", url})
+			_, err = os.StartProcess(ffp, []string{"firefox", url}, nil, ".", nil)
+		}
 	}
 	return
 }
