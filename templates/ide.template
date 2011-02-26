@@ -46,10 +46,10 @@
 </head>
 <body>
 <div class="build-container">
-    <div class="container">build bar</div>
+    <div class="container">{{BuildBar}}</div>
 </div>
 <div class="browse-container">
-	<div class="container">browse bar</div>
+	<div class="container">{{BrowseBar}}</div>
 </div>
 <div class="editor-container">
 	<div class="container">{{Editor}}</div>
