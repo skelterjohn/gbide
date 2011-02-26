@@ -1,3 +1,17 @@
 <center>
-<img height=50 width=% src="images/build-splash.png">
+
+
+<script src="jquery-ui/js/jquery-ui-1.8.10.custom.min.js"></script>
+<script>
+	$(function() {
+		$( "button, input:submit, a", ".demo" ).button();
+		$( "a", ".demo" ).click(function() { return false; });
+	});
+</script>
+
+<div class="demo">
+
+<button>A button element</button>
+
+</div><!-- End demo -->
 </center>

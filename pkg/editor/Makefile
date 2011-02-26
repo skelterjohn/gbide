@@ -6,6 +6,7 @@ include $(GOROOT)/src/Make.inc
 TARG=editor
 GOFILES=\
 	editor.go\
+	save.go\
 
 # gb: this is the local install
 GBROOT=../..

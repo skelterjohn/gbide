@@ -25,4 +25,4 @@ $(GBROOT)/bin/$(TARG): $(TARG)
 command: $(GBROOT)/bin/$(TARG)
 
 # gb: local dependencies
-$(TARG): $(GBROOT)/_obj/window.a
+$(TARG): $(GBROOT)/_obj/gbide.a

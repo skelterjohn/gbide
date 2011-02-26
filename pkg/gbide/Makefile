@@ -3,7 +3,7 @@
 
 include $(GOROOT)/src/Make.inc
 
-TARG=window
+TARG=gbide
 GOFILES=\
 	window.go\
 
@@ -22,4 +22,6 @@ package: $(GBROOT)/_obj/$(TARG).a
 include $(GOROOT)/src/Make.pkg
 
 # gb: local dependencies
+_obj/$(TARG).a: $(GBROOT)/_obj/build.a
+_obj/$(TARG).a: $(GBROOT)/_obj/browse.a
 _obj/$(TARG).a: $(GBROOT)/_obj/editor.a
