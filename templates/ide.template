@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<script src="jquery.js" type="text/javascript" charset="utf-8"></script>
-<script src="jquery-ui/js/jquery-ui-1.8.10.custom.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery-ui-1.8.10.custom.min.js" type="text/javascript" charset="utf-8"></script>
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>gbide</title>
   
-  <link rel="stylesheet" href="jquery-ui/css/ui-lightness/jquery-ui-1.8.10.custom.css">
+  <link rel="stylesheet" href="css/ui-lightness/jquery-ui-1.8.10.custom.css">
 	
   <style type="text/css" media="screen">
     html, body {

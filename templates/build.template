@@ -4,14 +4,18 @@
 <script src="jquery-ui/js/jquery-ui-1.8.10.custom.min.js"></script>
 <script>
 	$(function() {
-		$( "button, input:submit, a", ".demo" ).button();
-		$( "a", ".demo" ).click(function() { return false; });
+		$( "button", ".save" ).button();
+		$( ".save" ).click(
+			function() {
+				//alert(document.getElementById("foo").InnerHTML);
+				return false;
+			}
+		);
 	});
 </script>
 
-<div class="demo">
+<div class="save">
+<button>Save</button>
+</div>
 
-<button>A button element</button>
-
-</div><!-- End demo -->
 </center>
