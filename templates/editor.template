@@ -1,0 +1,8 @@
+file:{Path}
+<br>
+<textarea id=editfield>{Data}</textarea>
+<br>
+<button type="button" onclick="Save()">Save</button>
+
+<script type="text/javascript" src="html/editor.js">
+</script>
