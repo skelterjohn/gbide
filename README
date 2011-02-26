@@ -1,1 +1,5 @@
 Pronounced "geeb-eyed"
+
+Build it with "> ./build" or "> gb"
+
+Run it from the to gbide directory, "> ./bin/gbide"
