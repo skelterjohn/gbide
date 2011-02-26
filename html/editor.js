@@ -1,10 +1,10 @@
 
 function save()
 {
-	sendRequest("http://localhost:9090/save", 0, "stuff")
+	sendRequest("http://localhost:9090/save", "stuff")
 }
 
-function sendRequest(url,callback,postData) {
+function sendRequest(url,postData) {
 	var req = createXMLHTTPObject();
 	if (!req) return;
 	var method = (postData) ? "POST" : "GET";
@@ -18,8 +18,28 @@ function sendRequest(url,callback,postData) {
 			//			alert('HTTP error ' + req.status);
 			return;
 		}
-		callback(req);
 	}
 	if (req.readyState == 4) return;
 	req.send(postData);
+}
+
+var XMLHttpFactories = [
+						function () {return new XMLHttpRequest()},
+						function () {return new ActiveXObject("Msxml2.XMLHTTP")},
+						function () {return new ActiveXObject("Msxml3.XMLHTTP")},
+						function () {return new ActiveXObject("Microsoft.XMLHTTP")}
+];
+
+function createXMLHTTPObject() {
+	var xmlhttp = false;
+	for (var i=0;i<XMLHttpFactories.length;i++) {
+		try {
+			xmlhttp = XMLHttpFactories[i]();
+		}
+		catch (e) {
+			continue;
+		}
+		break;
+	}
+	return xmlhttp;
 }

@@ -1,8 +1,11 @@
+<html>
+
+<script type="text/javascript" src="editor.js"></script>
+
 file:{Path}
 <br>
 <textarea id=editfield>{Data}</textarea>
 <br>
 <button type="button" onclick="save()">Save</button>
 
-<script type="text/javascript" src="html/editor.js">
-</script>
+</html>
