@@ -1,4 +1,4 @@
-package window
+package gbide
 
 import (
 	"os"
@@ -18,7 +18,8 @@ func WindowHandle() (code string) {
 } 
 
 func RunServer(port int) {
-	web.Config.StaticDir = "html"
+	web.Config.StaticDir = "data"
 	web.Get("/", WindowHandle)
+	//web.Post("/save", editor.SaveHandler)
 	web.Run(fmt.Sprintf("0.0.0.0:%d", port))
 }

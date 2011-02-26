@@ -5,17 +5,29 @@ import (
 	"template"
 	"io"
 	"bytes"
+	"fmt"
+	"gonicetrace.googlecode.com/hg/nicetrace"
 )
 
 const EditorTemplatePath = "templates/editor.template"
 
-var T = template.MustParseFile(EditorTemplatePath, nil)
+var T *template.Template
+
+func init() {
+	T = template.New(nil)
+	T.SetDelims("{{", "}}")
+	T.ParseFile(EditorTemplatePath)
+}
 
 type Source struct {
 	Path, Data string
 }
 
+
+
 func OpenFile(file string) (code string) {
+	defer nicetrace.Print()
+
 	data, err := ReadFile(file)
 	
 	if err == nil {

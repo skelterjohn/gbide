@@ -1,10 +1,10 @@
 package main
 
 import (
-	"window"
+	"gbide"
 )
 
 func main() {
-	window.LaunchBrowser("http://localhost:9090")
-	window.RunServer(9090)
+	gbide.LaunchBrowser("http://localhost:9090")
+	gbide.RunServer(9090)
 }

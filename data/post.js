@@ -1,7 +1,8 @@
 
 function save()
 {
-	sendRequest("http://localhost:9090/save", "stuff")
+	var data = document.getElementById('filetext').value;
+	sendRequest("http://localhost:9090/save", data)
 }
 
 function sendRequest(url,postData) {
