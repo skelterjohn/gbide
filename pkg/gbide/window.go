@@ -2,10 +2,22 @@ package gbide
 
 import (
 	"os"
-	"fmt"
 	"github.com/mattn/web.go"
 	"editor"
+	"fmt"
+	"template"
+	"bytes"
 )
+
+const IDETemplatePath = "templates/ide.template"
+
+var IDET *template.Template
+
+func init() {
+	IDET = template.New(nil)
+	IDET.SetDelims("{{", "}}")
+	IDET.ParseFile(IDETemplatePath)
+}
 
 func LaunchBrowser(url string) (err os.Error) {
 	fmt.Println([]string{"open", url})
@@ -14,7 +26,11 @@ func LaunchBrowser(url string) (err os.Error) {
 }
 
 func WindowHandle() (code string) {
-	return editor.OpenFile("README")
+	data := map[string]string{"Editor":editor.OpenFile("README")}
+	buf := bytes.NewBuffer([]byte{})
+	IDET.Execute(buf, data)
+	code = buf.String()
+	return
 } 
 
 func RunServer(port int) {

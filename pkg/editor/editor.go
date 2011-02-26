@@ -5,25 +5,22 @@ import (
 	"template"
 	"io"
 	"bytes"
-	"fmt"
 	"gonicetrace.googlecode.com/hg/nicetrace"
 )
 
 const EditorTemplatePath = "templates/editor.template"
 
-var T *template.Template
+var EditorT *template.Template
 
 func init() {
-	T = template.New(nil)
-	T.SetDelims("{{", "}}")
-	T.ParseFile(EditorTemplatePath)
+	EditorT = template.New(nil)
+	EditorT.SetDelims("{{", "}}")
+	EditorT.ParseFile(EditorTemplatePath)
 }
 
 type Source struct {
 	Path, Data string
 }
-
-
 
 func OpenFile(file string) (code string) {
 	defer nicetrace.Print()
@@ -32,7 +29,7 @@ func OpenFile(file string) (code string) {
 	
 	if err == nil {
 		buf := bytes.NewBuffer([]byte{})
-		T.Execute(buf, Source{file, data})
+		EditorT.Execute(buf, Source{file, data})
 		code = buf.String()
 	} else {
 		code = err.String()
