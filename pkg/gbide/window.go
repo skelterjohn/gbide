@@ -1,6 +1,7 @@
 package gbide
 
 import (
+	"path"
 	"os"
 	"github.com/mattn/web.go"
 	"editor"
@@ -46,9 +47,37 @@ func WindowHandle() (code string) {
 	return
 } 
 
+func MakeRedirect(base string) (handler func (ctx *web.Context, val string)) {
+	handler = func(ctx *web.Context, val string) {
+		var fin *os.File
+		var err os.Error
+		fin, err = os.Open(path.Join(base, val), os.O_RDONLY, 0)
+		if err != nil {
+			ctx.WriteString(err.String())
+			return
+		}
+		buf := make([]byte, 1024)
+		for {
+			var n int
+			n, err = fin.Read(buf)
+			if err != nil {
+				ctx.WriteString(err.String())
+				return
+			}
+			if n == 0 || err != nil {
+				break
+			}
+			ctx.Write(buf[0:n])
+		}
+		fin.Close()
+	}
+	return
+}
+
 func RunServer(port int) {
 	web.Config.StaticDir = "data"
 	web.Get("/", WindowHandle)
+	//web.Get("/ace/(.*)", MakeRedirect("ace"))
 	//web.Post("/save", editor.SaveHandler)
 	web.Run(fmt.Sprintf("0.0.0.0:%d", port))
 }
