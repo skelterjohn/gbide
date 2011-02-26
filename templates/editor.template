@@ -2,7 +2,7 @@ file:{Path}
 <br>
 <textarea id=editfield>{Data}</textarea>
 <br>
-<button type="button" onclick="Save()">Save</button>
+<button type="button" onclick="save()">Save</button>
 
 <script type="text/javascript" src="html/editor.js">
 </script>

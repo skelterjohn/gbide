@@ -1,3 +1,5 @@
 _obj
 bin
 gbide.xcodeproj
+_go_.6
+cmd/gbide/gbide
