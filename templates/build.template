@@ -5,26 +5,23 @@
 <script>
 	$(function() {
 		$( "button", ".save" ).button();
+		$( "button", ".open" ).button();
 		$( ".save" ).click(
 			function() {
-				src = aceEditor.getSession().getValue();
-				$.ajax(
-				{
-					type: "POST",
-					url: "save",
-					data: {file:"README2", data:src},
-					context: document.body,
-					/*
-					success: function(data, textStatus, jqXHR){
-						alert(textStatus);
-					}
-					*/
-				});
-				return false;
+				SaveContents("README2");
+			}
+		);
+		$( ".open" ).click(
+			function() {
+				LoadContents("README2")
 			}
 		);
 	});
 </script>
+
+<div class="open">
+<button>Open</button>
+</div>
 
 <div class="save">
 <button>Save</button>

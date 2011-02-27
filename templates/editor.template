@@ -3,7 +3,7 @@
 <script src="ace/src/ace.js" type="text/javascript" charset="utf-8"></script>
 <script src="ace/src/theme-twilight.js" type="text/javascript" charset="utf-8"></script>
 <script src="ace/src/mode-c_cpp.js" type="text/javascript" charset="utf-8"></script>
-<script src="ace/editor.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/io.js" type="text/javascript" charset="utf-8"></script>
 <script>
 var aceEditor = null
 window.onload = function() {
