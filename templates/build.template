@@ -7,7 +7,19 @@
 		$( "button", ".save" ).button();
 		$( ".save" ).click(
 			function() {
-				//alert(document.getElementById("foo").InnerHTML);
+				src = aceEditor.getSession().getValue();
+				$.ajax(
+				{
+					type: "POST",
+					url: "save",
+					data: {file:"README2", data:src},
+					context: document.body,
+					/*
+					success: function(data, textStatus, jqXHR){
+						alert(textStatus);
+					}
+					*/
+				});
 				return false;
 			}
 		);

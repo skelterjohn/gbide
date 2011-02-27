@@ -1,11 +1,19 @@
 package editor
 
 import (
-	"fmt"
+	"os"
 	"github.com/mattn/web.go"
 )
 
 func SaveHandler(ctx *web.Context) (code string) {
-	fmt.Printf("%v\n", ctx.Request.Params)
+	params := ctx.Request.Params
+	file := params["file"]
+	data := params["data"]
+
+	fout, err := os.Open(file, os.O_CREATE|os.O_RDWR, 0644)
+	if err == nil {
+		fout.WriteString(data)
+		fout.Close()
+	}
 	return
 }

@@ -5,10 +5,11 @@
 <script src="ace/src/mode-c_cpp.js" type="text/javascript" charset="utf-8"></script>
 <script src="ace/editor.js" type="text/javascript" charset="utf-8"></script>
 <script>
+var aceEditor = null
 window.onload = function() {
-    var editor = ace.edit("editor");
-	editor.setTheme("ace/theme/twilight");
+    aceEditor = ace.edit("editor");
+	aceEditor.setTheme("ace/theme/twilight");
     var JavaScriptMode = require("ace/mode/c_cpp").Mode;
-    editor.getSession().setMode(new JavaScriptMode());
+    aceEditor.getSession().setMode(new JavaScriptMode());
 };
 </script>
