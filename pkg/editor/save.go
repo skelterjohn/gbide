@@ -5,12 +5,11 @@ import (
 	"github.com/mattn/web.go"
 )
 
-func SaveHandler(ctx *web.Context) (code string) {
+func SaveHandler(ctx *web.Context, filename string) (code string) {
 	params := ctx.Request.Params
-	file := params["filename"]
 	data := params["data"]
 
-	fout, err := os.Open(file, os.O_CREATE|os.O_RDWR, 0644)
+	fout, err := os.Open(filename, os.O_CREATE|os.O_RDWR, 0644)
 	if err == nil {
 		fout.WriteString(data)
 		fout.Close()
@@ -19,9 +18,9 @@ func SaveHandler(ctx *web.Context) (code string) {
 	return
 }
 
-func LoadHandler(ctx *web.Context) {
-	params := ctx.Request.Params
-	filename := params["filename"]
+func LoadHandler(ctx *web.Context, filename string) {
+	//params := ctx.Request.Params
+	//filename := params["filename"]
 	
 	var fin *os.File
 	var err os.Error

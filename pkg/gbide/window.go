@@ -83,7 +83,7 @@ func MakeRedirect(base string) (handler func (ctx *web.Context, val string)) {
 func RunServer(port int) {
 	web.Config.StaticDir = "data"
 	web.Get("/", WindowHandle)
-	web.Post("/save", editor.SaveHandler)
-	web.Post("/load", editor.LoadHandler)
+	web.Post("/save/(.*)", editor.SaveHandler)
+	web.Get("/load/(.*)", editor.LoadHandler)
 	web.Run(fmt.Sprintf("0.0.0.0:%d", port))
 }

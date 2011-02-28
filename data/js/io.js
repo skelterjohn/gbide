@@ -3,8 +3,8 @@ var SaveContents = function(filename) {
 	data = aceEditor.getSession().getValue();
 	$.ajax({
 				type: "POST",
-				url: "save",
-				data: {filename:filename, data:data},
+				url: "save/"+filename,
+				data: {data:data},
 				context: document.body,
 				success: function(data, textStatus, jqXHR){
 					if (data != null) {
@@ -16,9 +16,8 @@ var SaveContents = function(filename) {
 
 var LoadContents = function(filename) {
 	$.ajax({
-				type: "POST",
-				url: "load",
-				data: {filename:filename},
+				type: "GET",
+				url: "load/"+filename,
 				context: document.body,
 				success: function(data, textStatus, jqXHR) {
 					aceEditor.getSession().setValue(data)
