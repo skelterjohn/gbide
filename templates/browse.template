@@ -1,3 +1,25 @@
 <center>
-<img width=200 src="images/browse-splash.png">
+<script>
+$(function() {
+	$( "#accordion" ).accordion({
+		autoHeight: false,
+		navigation: true
+	});
+});
+</script>
+
+<div id="accordion">
+	<h6><a href="#section1">project1</a></h6>
+	<div>
+		<br>source1</br>
+		<br>source2</br>
+		<br>source3</br>
+	</div>
+	<h1><a href="#section2">project2</a></h1>
+	<div>
+		<br>src/source1</br>
+		<br>source2</br>
+	</div>
+</div>
+
 </center>
