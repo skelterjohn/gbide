@@ -1,4 +1,37 @@
-<center>
+
+
+<link href="treetable/css/jquery.treeTable.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="treetable/jquery.treeTable.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function()  {
+  $("#example").treeTable();
+});  
+</script>
+
+<table id="example">
+  <tr id="node-1">
+    <td>target1</td>
+  </tr>
+  <tr id="node-2" class="child-of-node-1">
+    <td>source1</td>
+  </tr>
+  <tr id="node-3" class="child-of-node-1">
+    <td>source222</td>
+  </tr>
+  <tr id="node-4" class="child-of-node-1">
+    <td>source3</td>
+  </tr>
+  <tr id="node-5">
+    <td>target2</td>
+  </tr>
+  <tr id="node-6" class="child-of-node-5">
+    <td>src/source1</td>
+  </tr>
+  <tr id="node-7" class="child-of-node-5">
+    <td>source2</td>
+  </tr>
+</table>
+
 <script>
 $(function() {
 	$( "#accordion" ).accordion({
@@ -9,17 +42,15 @@ $(function() {
 </script>
 
 <div id="accordion">
-	<h6><a href="#section1">project1</a></h6>
+	<h6><a href="#section1">target</a></h6>
+	<ul>
+		<li>source1</li>
+		<li>source222</li>
+		<li>source3</li>
+	</ul>
+	<h1><a href="#section2">target2</a></h1>
 	<div>
-		<br>source1</br>
-		<br>source2</br>
-		<br>source3</br>
-	</div>
-	<h1><a href="#section2">project2</a></h1>
-	<div>
-		<br>src/source1</br>
-		<br>source2</br>
+		src/source1
+		source2
 	</div>
 </div>
-
-</center>
