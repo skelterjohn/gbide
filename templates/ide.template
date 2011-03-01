@@ -2,6 +2,7 @@
 <html lang="en">
 <script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/jquery-ui-1.8.10.custom.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/sprintf-0.7-beta1.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/io.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/gb.js" type="text/javascript" charset="utf-8"></script>
 <head>
@@ -50,6 +51,9 @@
         margin: 0;
         padding: 0;
     }
+	#treetable {
+		left:50px;
+	}
   </style>
 </head>
 <body>

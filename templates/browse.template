@@ -1,44 +1,15 @@
 <script type="text/javascript" src="treetable/jquery.treeTable.min.js"></script>
+
 <script type="text/javascript">
 $(document).ready(function()  {
-  $("#example").treeTable();
+  $("#filebrowser").treeTable();
+  $( "#pkgbrowser" ).accordion();
 });  
 </script>
 
-<table id="example">
-  <tr id="node-1">
-    <td>target1</td>
-  </tr>
-  <tr id="node-2" class="child-of-node-1">
-    <td>source1</td>
-  </tr>
-  <tr id="node-3" class="child-of-node-1">
-    <td>source222</td>
-  </tr>
-  <tr id="node-4" class="child-of-node-1">
-    <td>source3</td>
-  </tr>
-  <tr id="node-5">
-    <td>target2</td>
-  </tr>
-  <tr id="node-6" class="child-of-node-5">
-    <td>src/source1</td>
-  </tr>
-  <tr id="node-7" class="child-of-node-5">
-    <td>source2</td>
-  </tr>
+<div id="pkgbrowser">
+</div>
+
+<table id="filebrowser">
 </table>
 
-<script>
-$(document).ready(function() {
-	$( "#pkgbrowser" ).accordion();
-});
-</script>
-
-<div id="pkgbrowser">
-<h6><a href="#section1">"build"</a></h6>
-<div>
-Makefile
-<a href='javascript:LoadContents("pkg/build/build.go")'>build.go</a>
-</div>
-</div>
