@@ -5,6 +5,7 @@ include $(GOROOT)/src/Make.inc
 
 TARG=gbide
 GOFILES=\
+	gbrun.go\
 	window.go\
 
 # gb: this is the local install
