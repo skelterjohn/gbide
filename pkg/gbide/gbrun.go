@@ -18,7 +18,7 @@ func init() {
 func GBHandler(ctx *web.Context) {
 	params := ctx.Request.Params
 	args := append([]string{"gb"}, strings.Split(params["args"], " ", -1)...)
-	fmt.Printf("> gb %s\n", args)
+	fmt.Printf("%v\n", args)
 	wd, _ := os.Getwd()
 	RunExternalDump(GBCMD, wd, args, ctx)
 }

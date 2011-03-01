@@ -12,7 +12,8 @@
 		);
 		$( ".open" ).click(
 			function() {
-				LoadContents("README2")
+				ScanWorkspace()
+				//LoadContents("README2")
 			}
 		);
 	});

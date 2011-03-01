@@ -30,24 +30,15 @@ $(document).ready(function()  {
 </table>
 
 <script>
-$(function() {
-	$( "#accordion" ).accordion({
-		autoHeight: false,
-		navigation: true
-	});
+$(document).ready(function() {
+	$( "#pkgbrowser" ).accordion();
 });
 </script>
 
-<div id="accordion">
-	<h6><a href="#section1">target</a></h6>
-	<ul>
-		<li>source1</li>
-		<li>source222</li>
-		<li>source3</li>
-	</ul>
-	<h1><a href="#section2">target2</a></h1>
-	<div>
-		src/source1
-		source2
-	</div>
+<div id="pkgbrowser">
+<h6><a href="#section1">"build"</a></h6>
+<div>
+Makefile
+build.go
+</div>
 </div>
