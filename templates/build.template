@@ -7,21 +7,16 @@
 		$( "button", ".open" ).button();
 		$( ".save" ).click(
 			function() {
-				SaveContents("README2");
+				SaveCurrentContents();
 			}
 		);
 		$( ".open" ).click(
 			function() {
 				ScanWorkspace()
-				//LoadContents("README2")
 			}
 		);
 	});
 </script>
-
-<div class="open">
-<button>Open</button>
-</div>
 
 <div class="save">
 <button>Save</button>

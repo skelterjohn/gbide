@@ -1,10 +1,11 @@
 
+var dir = "";
+
 var ScanSuccess = function(data, textStatus, jqXHR) {
 	//newhtml = "<div id=\"pkgbrowser\">\n";
 	newhtml = ""
 	lines = data.split("\n");
 	section = 1;
-	files = 0
 	for (i=0; i<lines.length-1; i++) {
 		tokens = lines[i].split(" ")
 		if (tokens[0] == "in") {
@@ -15,32 +16,31 @@ var ScanSuccess = function(data, textStatus, jqXHR) {
 			uptodate = status == "(up";
 			installed = status == "(installed)";
 			
+			label = kind+" "+target;
 			
-			if (files != 0) {
+			if (section != 1) {
 				newhtml += "</div>\n";
 			}
 			newhtml += "<h6><a href=\"#section";
 			newhtml += section;
-			newhtml += "\">"+target+"</a></h6>\n";
+			newhtml += "\">"+label+"</a></h6>\n";
+			newhtml += "<div>\n";
+			newhtml += "in "+dir+"\n";
 			section++;
-			files = 0
 		}
 		else {
 			filename = tokens[0].slice(1);
-			if (files == 0) {
-				newhtml += "<div>\n";
-			}
-			newhtml += filename+"\n";
-			files++;	
+			fullname = dir+"/"+filename
+			newhtml += "<a href='javascript:LoadContents(\""+fullname+"\")'>";
+			newhtml += filename+"</a>\n";
 		}
 	}
-	if (files != 0) {
-		newhtml += "</div>\n";
-	}
+	newhtml += "</div>\n";
 	//newhtml += "</div>\n";
+	$( "#pkgbrowser" ).accordion("destroy");
 	$( "#pkgbrowser" ).html(newhtml);
-	aceEditor.getSession().setValue(newhtml)
-	$( "#pkgbrowser" ).accordion();
+	//aceEditor.getSession().setValue(newhtml)
+	$( "#pkgbrowser" ).accordion({fillSpace: true});
 	
 }
 
@@ -54,3 +54,6 @@ var ScanWorkspace = function() {
 		success: ScanSuccess
 	});
 }
+$(document).ready(function(){
+	ScanWorkspace()
+});

@@ -39,6 +39,6 @@ $(document).ready(function() {
 <h6><a href="#section1">"build"</a></h6>
 <div>
 Makefile
-build.go
+<a href='javascript:LoadContents("pkg/build/build.go")'>build.go</a>
 </div>
 </div>

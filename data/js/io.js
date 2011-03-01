@@ -1,4 +1,5 @@
 
+
 var SaveContents = function(filename) {
 	data = aceEditor.getSession().getValue();
 	$.ajax({
@@ -14,13 +15,22 @@ var SaveContents = function(filename) {
 			});
 }
 
+var currentFile = "";
+
 var LoadContents = function(filename) {
 	$.ajax({
-				type: "GET",
-				url: "load/"+filename,
-				context: document.body,
-				success: function(data, textStatus, jqXHR) {
-					aceEditor.getSession().setValue(data)
-				}
-			});
+		type: "GET",
+		url: "load/"+filename,
+		context: document.body,
+		success: function(data, textStatus, jqXHR) {
+			currentFile = filename;
+			aceEditor.getSession().setValue(data)
+		}
+	});
+}
+
+var SaveCurrentContents = function() {
+	if (currentFile != "") {
+		SaveContents(currentFile)
+	}
 }

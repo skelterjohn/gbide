@@ -17,6 +17,7 @@ func init() {
 }
 
 func GetBar() (code string) {
+    //edited from gbide
 	var err os.Error
 	if err == nil {
 		buf := bytes.NewBuffer([]byte{})
