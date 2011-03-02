@@ -50,11 +50,10 @@ var ScanSuccess = function(data, textStatus, jqXHR) {
 	$( "#pkgbrowser" ).html(newhtml)
 	$( "#pkgbrowser" ).accordion({fillSpace: true})
 	
-	$("#filebrowser").treeTable("destroy")
-	$("#filebrowser").html(newhtml2)
-	$("#filebrowser").treeTable()	
+	//$("#filebrowser").treeTable("destroy")
+	//$("#filebrowser").html(newhtml2)
+	//$("#filebrowser").treeTable()	
 	
-	aceEditor.getSession().setValue(newhtml)
 }
 
 var ScanWorkspace = function() {

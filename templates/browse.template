@@ -3,13 +3,26 @@
 <script type="text/javascript">
 $(document).ready(function()  {
   $("#filebrowser").treeTable();
-  $( "#pkgbrowser" ).accordion();
+  $("#pkgbrowser").accordion();
+  $("#browsertabs").tabs()
 });  
 </script>
 
-<div id="pkgbrowser">
+<div id="browsertabs">
+	<ul>
+		<li><a href="#tabs-pkg">Pkg</a></li>
+		<li><a href="#tabs-file">Files</a></li>
+	</ul>
+	
+	<div id="tabs-file">
+		<table id="filebrowser">
+		<tr id="dir-top"><td>workspace</td></tr>
+		</table>
+	</div>
+
+	<div id="tabs-pkg">
+		<div id="pkgbrowser">
+		</div>
+	</div>
+
 </div>
-
-<table id="filebrowser">
-</table>
-
