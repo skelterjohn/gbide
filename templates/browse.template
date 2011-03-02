@@ -3,15 +3,15 @@
 <script type="text/javascript">
 $(document).ready(function()  {
   $("#filebrowser").treeTable();
-  $("#pkgbrowser").accordion();
+  $("#pkgbrowser").treeTable();
   $("#browsertabs").tabs()
 });  
 </script>
 
 <div id="browsertabs">
 	<ul>
-		<li><a href="#tabs-pkg">Pkg</a></li>
 		<li><a href="#tabs-file">Files</a></li>
+		<li><a href="#tabs-pkg">Pkg</a></li>
 	</ul>
 	
 	<div id="tabs-file">
@@ -21,8 +21,8 @@ $(document).ready(function()  {
 	</div>
 
 	<div id="tabs-pkg">
-		<div id="pkgbrowser">
-		</div>
+		<table id="pkgbrowser">
+		</table>
 	</div>
 
 </div>

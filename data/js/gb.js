@@ -46,9 +46,9 @@ var ScanSuccess = function(data, textStatus, jqXHR) {
 	}
 	newhtml += "</div>\n"
 	//newhtml += "</div>\n";
-	$( "#pkgbrowser" ).accordion("destroy")
-	$( "#pkgbrowser" ).html(newhtml)
-	$( "#pkgbrowser" ).accordion({fillSpace: true})
+	$( "#pkgbrowser" ).treeTable("destroy")
+	$( "#pkgbrowser" ).html(newhtml2)
+	$( "#pkgbrowser" ).treeTable()
 	
 	//$("#filebrowser").treeTable("destroy")
 	//$("#filebrowser").html(newhtml2)
