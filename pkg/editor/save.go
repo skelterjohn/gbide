@@ -2,6 +2,7 @@ package editor
 
 import (
 	"os"
+	"fmt"
 	"github.com/mattn/web.go"
 )
 
@@ -11,17 +12,15 @@ func SaveHandler(ctx *web.Context, filename string) (code string) {
 
 	fout, err := os.Open(filename, os.O_CREATE|os.O_RDWR, 0644)
 	if err == nil {
-		fout.WriteString(data)
+		_, err = fout.WriteString(data)
+		
 		fout.Close()
-		code = "ok"
 	}
+	code = fmt.Sprintf("%v", err)
 	return
 }
 
 func LoadHandler(ctx *web.Context, filename string) {
-	//params := ctx.Request.Params
-	//filename := params["filename"]
-	
 	var fin *os.File
 	var err os.Error
 	fin, err = os.Open(filename, os.O_RDONLY, 0)

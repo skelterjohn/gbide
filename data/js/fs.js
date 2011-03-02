@@ -11,8 +11,6 @@ var ListSuccess = function(data, textStatus, jqXHR) {
 	$("#filebrowser").treeTable("destroy")
 	$("#filebrowser").html(data)
 	$("#filebrowser").treeTable()	
-
-	aceEditor.getSession().setValue(data)
 }
 
 $(document).ready(function(){
