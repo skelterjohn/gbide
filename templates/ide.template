@@ -57,9 +57,6 @@
         margin: 0;
         padding: 0;
     }
-	#treetable {
-		left:50px;
-	}
   </style>
 </head>
 <body>

@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <title>JQTreeTable</title>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="jqtreetable.js"></script>
+<link href="jqtreetable.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+
+$(function(){//Initialise the treetable
+  var map1=[0, 0, 2, 3, 4, 4, 6, 4, 2, 9, 10, 0, 0, 13, 0, 0, 0, 17, 17, 0],
+  map2=[0, 1, 1, 3, 4, 3, 6, 3, 3, 1, 0, 0, 0, 0, 14, 14, 0, 17, 0, 0];
+  var options1 = {openImg: "images/tv-collapsable.gif", shutImg: "images/tv-expandable.gif", leafImg: "images/tv-item.gif", lastOpenImg: "images/tv-collapsable-last.gif", lastShutImg: "images/tv-expandable-last.gif", lastLeafImg: "images/tv-item-last.gif", vertLineImg: "images/vertline.gif", blankImg: "images/blank.gif", collapse: false, column: 1, striped: true, highlight: true, state:true};
+  $("#treet1").jqTreeTable(map1, options1);
+  $("#treet2").jqTreeTable(map2, {openImg: "images/fopen.gif", shutImg: "images/fshut.gif", leafImg: "images/new.gif", lastOpenImg: "images/fopen.gif", lastShutImg: "images/fshut.gif", lastLeafImg: "images/new.gif", vertLineImg: "images/blank.gif", blankImg: "images/blank.gif", collapse: false, column: 1, striped: true, highlight: true, state:false});
+})
+    </script>
+
+  </head>
+  <body>
+<table class="tablemain"><thead><tr><th>Row No</th><th>Description</th><th>Path to Row</th><th>Level</th><th>Status</th></tr></thead>
+<tbody id="treet1">
+<tr><td>1</td><td>Child of 0</td><td>[0, 1]</td><td>1</td><td></td></tr>
+<tr><td>2</td><td>Child of 0</td><td>[0, 2]&nbsp;</td><td>1</td><td></td></tr>
+<tr><td>3</td><td>Child of 2</td><td>[0, 2, 3]&nbsp;</td><td>2</td><td></td></tr>
+<tr><td>4</td><td>Child of 3</td><td>[0, 2, 3, 4]&nbsp;</td><td>3</td><td></td></tr>
+<tr><td>5</td><td>Child of 4</td><td>[0, 2, 3, 4, 5]&nbsp;</td><td>4</td><td></td></tr>
+<tr><td>6</td><td>Child of 4</td><td>[0, 2, 3, 4, 6]&nbsp;</td><td>4</td><td></td></tr>
+<tr><td>7</td><td>Child of 6</td><td>[0, 2, 3, 4, 6, 7]&nbsp;</td><td>5</td><td></td></tr>
+<tr><td>8</td><td>Child of 4</td><td>[0, 2, 3, 4, 8]&nbsp;</td><td>4</td><td></td></tr>
+<tr><td>9</td><td>Child of 2</td><td>[0, 2, 9]&nbsp;</td><td>2</td><td></td></tr>
+<tr><td>10</td><td>Child of 9</td><td>[0, 2, 9, 10]&nbsp;</td><td>3</td><td></td></tr>
+<tr><td>11</td><td>Child of 10</td><td>[0, 2, 9, 10, 11]&nbsp;</td><td>4</td><td></td></tr>
+<tr><td>12</td><td>Child of 0</td><td>[0, 12]&nbsp;</td><td>1</td><td></td></tr>
+<tr><td>13</td><td>Child of 0</td><td>[0, 13]&nbsp;</td><td>1</td><td></td></tr>
+<tr><td>14</td><td>Child of 13</td><td>[0, 13, 14]&nbsp;</td><td>2</td><td></td></tr>
+<tr><td>15</td><td>Child of 0</td><td>[0, 15]&nbsp;</td><td>1</td><td></td></tr>
+<tr><td>16</td><td>Child of 0</td><td>[0, 16]&nbsp;</td><td>1</td><td></td></tr>
+<tr><td>17</td><td>Child of 0</td><td>[0, 17]&nbsp;</td><td>1</td><td></td></tr>
+
+<tr><td>18</td><td>Child of 17</td><td>[0, 17, 18]&nbsp;</td><td>2</td><td></td></tr>
+<tr><td>19</td><td>Child of 17</td><td>[0, 17, 19]&nbsp;</td><td>2</td><td></td></tr>
+<tr><td>20</td><td>Child of 0</td><td>[0, 20]&nbsp;</td><td>1</td><td></td></tr>
+</tbody></table><br />
+<table class="tablemain"><thead><tr><th>Row No</th><th>Description</th><th>Path to Row</th><th>Level</th><th>Status</th></tr></thead>
+<tfoot><tr><th>Row No</th><th>Description</th><th>Path to Row</th><th>Level</th><th>Status</th></tr></tfoot>
+<tbody id="treet2"><tr><td>1</td><td><a href="jQTreeTable.zip" onclick="alert('Ive been clicked!');">Click to download</a></td><td>[0, 1]</td><td>1</td><td></td></tr>
+<tr><td>2</td><td>Child of 1</td><td>[0, 1, 2]&nbsp;</td><td>2</td><td></td></tr>
+<tr><td>3</td><td>Child of 1</td><td>[0, 1, 3]&nbsp;</td><td>2</td><td></td></tr>
+<tr><td>4</td><td>Child of 3</td><td>[0, 1, 3, 4]&nbsp;</td><td>3</td><td></td></tr>
+<tr><td>5</td><td>Child of 4</td><td>[0, 1, 3, 4, 5]&nbsp;</td><td>4</td><td></td></tr>
+<tr><td>6</td><td>Child of 3</td><td>[0, 1, 3, 6]&nbsp;</td><td>3</td><td></td></tr>
+<tr><td>7</td><td>Child of 6</td><td>[0, 1, 3, 6, 7]&nbsp;</td><td>4</td><td></td></tr>
+<tr><td>8</td><td>Child of 3</td><td>[0, 1, 3, 8]&nbsp;</td><td>3</td><td></td></tr>
+<tr><td>9</td><td>Child of 3</td><td>[0, 1, 3, 9]&nbsp;</td><td>3</td><td></td></tr>
+<tr><td>10</td><td>Child of 1</td><td>[0, 1, 10]&nbsp;</td><td>2</td><td></td></tr>
+<tr><td>11</td><td>Child of 0</td><td>[0, 11]&nbsp;</td><td>1</td><td></td></tr>
+<tr><td>12</td><td>Child of 0</td><td>[0, 12]&nbsp;</td><td>1</td><td></td></tr>
+<tr><td>13</td><td>Child of 0</td><td>[0, 13]&nbsp;</td><td>1</td><td></td></tr>
+<tr><td>14</td><td>Child of 0</td><td>[0, 14]&nbsp;</td><td>1</td><td></td></tr>
+<tr><td>15</td><td>Child of 14</td><td>[0, 14, 15]&nbsp;</td><td>2</td><td></td></tr>
+<tr><td>16</td><td>Child of 14</td><td>[0, 14, 16]&nbsp;</td><td>2</td><td></td></tr>
+<tr><td>17</td><td>Child of 0</td><td>[0, 17]&nbsp;</td><td>1</td><td></td></tr>
+<tr><td>18</td><td>Child of 17</td><td>[0, 17, 18]&nbsp;</td><td>2</td><td></td></tr>
+<tr><td>19</td><td>Child of 0</td><td>[0, 19]&nbsp;</td><td>1</td><td></td></tr>
+<tr><td>20</td><td>Child of 0</td><td>[0, 20]&nbsp;</td><td>1</td><td></td></tr>
+</tbody><tr><td>Random</td><td>data</td><td>outside</td><td>treetable</td><td>tbody</td></tr>
+</table>
+
+  </body>
+</html>

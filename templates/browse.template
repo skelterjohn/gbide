@@ -1,35 +1,32 @@
 <script type="text/javascript" src="treetable/jquery.treeTable.min.js"></script>
 
+<script type="text/javascript" src="jqtreetable/jqtreetable.js"></script>
+<link href="jqtreetable/jqtreetable.css" rel="stylesheet" type="text/css" />
+
 <script type="text/javascript">
 $(document).ready(function()  {
-  $("#filebrowser").treeTable()
-  $("#pkgbrowser").treeTable()
-  $("#browsertabs").tabs()
-  //$(".scrollable").jScrollPane()
+	$("#filebrowser").treeTable()
+	//$("#pkgbrowser").treeTable()
+	$("#browsertabs").tabs()
+ 
 });  
 </script>
 
 
 <style type="text/css" media="screen">
-  .files {
-    font-size: 14px;
-	width: 100%;
-  }
-  .scrollable {
-	overflow: auto;
-	width=200px;
-	height=100%;
-  }
 
-  .file:hover {
-	background-color: #AACCFF;
-  }
-  .files a {
-    text-decoration:none;
-  }
-  .fileheaders {
-    font-size: 14px;
-  }
+	.files a {
+		text-decoration:none;
+	}
+	.fileheaders {
+		font-size: 14px;
+	}
+
+	#pkgbrowsertree td {
+		font: normal 10pt Arial; 
+		padding: 0px 0px 0px 0px;
+		cursor: pointer;
+	}
 </style>
 
 <div id="browsertabs">
@@ -46,6 +43,8 @@ $(document).ready(function()  {
 		
 	<div class="scrollable" id="tabs-pkg">
 		<table class="files" id="pkgbrowser">
+			<tbody id="pkgbrowsertree">
+			</tbody>
 		</table>
 	</div>
 

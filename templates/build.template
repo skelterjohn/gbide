@@ -21,8 +21,6 @@
 
 <div class="build-button">
 <button id="save">Save</button>
-</div>
-<div class="build-button">
 <button>Ok</button>
 </div>
 

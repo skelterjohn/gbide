@@ -4,8 +4,10 @@ var dir = "";
 var ScanSuccess = function(data, textStatus, jqXHR) {
 	newhtml = ""
 	lines = data.split("\n")
-	section = 0
-	file = 1
+	
+	mapping = []
+	lastpkg = 0
+	
 	for (i=0; i<lines.length-1; i++) {
 		tokens = lines[i].split(" ")
 		if (tokens[0] == "in") {
@@ -18,30 +20,26 @@ var ScanSuccess = function(data, textStatus, jqXHR) {
 			
 			label = kind+" "+target
 			
-			if (section != 0) {
-				newhtml += "</div>\n"
-			}
-			section++;
+			newhtml += sprintf("<tr><td>%s</td></tr>\n", label)
 			
-			iddir = dir.replace("/", "-")
-			newhtml += sprintf("<tr class=\"file\" id=\"file-%s\"><td>%s</td></tr>\n", iddir, label)
-			
-			file = 1
+			mapping = mapping.concat([0])
+			lastpkg = i+1
+
 		}
 		else {
 			filename = tokens[0].slice(1)
 			fullname = dir+"/"+filename
 			
-			iddir = dir.replace("/", "-")
-			idname = iddir+"-"+filename.replace("/", "-")
-			newhtml += sprintf("<tr id=\"file-%s\" class=\"file child-of-file-%s\"><td><a id=\"%s\" href='javascript:LoadContents(\"%s\")'>%s</a></td></tr>\n", idname, iddir, fullname, fullname, filename)
-			file++
+			newhtml += sprintf("<tr><td><a href='javascript:LoadContents(\"%s\")'>%s</a></td></tr>\n", fullname, filename)
+			
+			mapping = mapping.concat([lastpkg])
 		}
 	}
+	//mapping = [0,1,1,1,0,5,5,5,0,9,9,9,0,13,13,0,16,16]
+	$("#pkgbrowsertree").html(newhtml)
+	//aceEditor.getSession().setValue(newhtml+"\n"+(mapping.join(",")))
 	
-	$( "#pkgbrowser" ).treeTable("destroy")
-	$( "#pkgbrowser" ).html(newhtml)
-	$( "#pkgbrowser" ).treeTable()
+	$("#pkgbrowsertree").jqTreeTable(mapping, jq_defaults);
 	
 	
 }
