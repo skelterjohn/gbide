@@ -1,22 +1,15 @@
 <center>
 
-<style type="text/css" media="screen">
-    .build-button {
-        height: 100%;
-        float: left;
-    }
-</style>
-
 <script>
-	$(function() {
-		$( "button", ".build-button" ).button();
-		$( "#save" ).click(
-			function() {
-				alert("ok");
-				SaveCurrentContents();
-			}
-		);
-	});
+$(function() {
+	$( "button", ".build-button" ).button();
+	$( "#save" ).click(
+		function() {
+			alert("ok");
+			SaveCurrentContents();
+		}
+	);
+});
 </script>
 
 <div class="build-button">

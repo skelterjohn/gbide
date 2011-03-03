@@ -1,7 +1,3 @@
-<script type="text/javascript" src="treetable/jquery.treeTable.min.js"></script>
-
-<script type="text/javascript" src="jqtreetable/jqtreetable.js"></script>
-<link href="jqtreetable/jqtreetable.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript">
 $(document).ready(function()  {
