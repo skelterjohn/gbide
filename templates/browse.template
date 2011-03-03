@@ -2,9 +2,10 @@
 
 <script type="text/javascript">
 $(document).ready(function()  {
-  $("#filebrowser").treeTable();
-  $("#pkgbrowser").treeTable();
+  $("#filebrowser").treeTable()
+  $("#pkgbrowser").treeTable()
   $("#browsertabs").tabs()
+  //$(".scrollable").jScrollPane()
 });  
 </script>
 
@@ -12,14 +13,20 @@ $(document).ready(function()  {
 <style type="text/css" media="screen">
   .files {
     font-size: 14px;
+	width: 100%;
+  }
+  .scrollable {
+	overflow: auto;
+	width=200px;
+	height=100%;
   }
 
   .file:hover {
 	background-color: #AACCFF;
   }
-  a {
-    text-decoration:none
-  } 
+  .files a {
+    text-decoration:none;
+  }
   .fileheaders {
     font-size: 14px;
   }
@@ -31,13 +38,13 @@ $(document).ready(function()  {
 		<li><a class="fileheaders" href="#tabs-pkg">Pkg</a></li>
 	</ul>
 	
-	<div id="tabs-file">
+	<div class="scrollable" id="tabs-file">
 		<table class="files" id="filebrowser">
 		<tr class="file" id="dir-top"><td>workspace</td></tr>
 		</table>
 	</div>
-
-	<div id="tabs-pkg">
+		
+	<div class="scrollable" id="tabs-pkg">
 		<table class="files" id="pkgbrowser">
 		</table>
 	</div>

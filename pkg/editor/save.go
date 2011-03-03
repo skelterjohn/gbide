@@ -3,16 +3,16 @@ package editor
 import (
 	"os"
 	"fmt"
-	"github.com/mattn/web.go"
+	"github.com/hoisie/web.go"
 )
 
 func SaveHandler(ctx *web.Context, filename string) (code string) {
 	params := ctx.Request.Params
 	data := params["data"]
-
-	fout, err := os.Open(filename, os.O_CREATE|os.O_RDWR, 0644)
+    
+	fout, err := os.Open(filename, os.O_CREATE|os.O_RDWR|os.O_TRUNC, 0644)
 	if err == nil {
-		_, err = fout.WriteString(data)
+		_, err = fmt.Fprintf(fout, "%s", data)
 		
 		fout.Close()
 	}

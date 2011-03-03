@@ -42,7 +42,7 @@ var ScanSuccess = function(data, textStatus, jqXHR) {
 	$( "#pkgbrowser" ).treeTable("destroy")
 	$( "#pkgbrowser" ).html(newhtml)
 	$( "#pkgbrowser" ).treeTable()
-		
+	
 	
 }
 

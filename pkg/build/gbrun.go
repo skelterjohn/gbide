@@ -1,4 +1,4 @@
-package gbide
+package build
 
 import (
 	"fmt"
@@ -6,7 +6,8 @@ import (
 	"os"
 	"exec"
 	"io"
-	"github.com/mattn/web.go"
+	"github.com/hoisie/web.go"
+    
 )
 
 var GBCMD string

@@ -6,6 +6,7 @@ include $(GOROOT)/src/Make.inc
 TARG=browse
 GOFILES=\
 	browse.go\
+	files.go\
 
 # gb: this is the local install
 GBROOT=../..

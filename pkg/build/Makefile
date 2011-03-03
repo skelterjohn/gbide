@@ -6,6 +6,7 @@ include $(GOROOT)/src/Make.inc
 TARG=build
 GOFILES=\
 	build.go\
+	gbrun.go\
 
 # gb: this is the local install
 GBROOT=../..

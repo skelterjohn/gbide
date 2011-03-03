@@ -1,11 +1,11 @@
-package gbide
+package browse
 
 import (
 	"os"
 	"path"
 	"fmt"
-	"strings"
-	"github.com/mattn/web.go"
+	"strings"//
+	"github.com/hoisie/web.go"
 )
 
 func ListHandler(ctx *web.Context, dir string) {

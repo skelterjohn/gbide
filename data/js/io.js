@@ -11,7 +11,7 @@ var SaveContents = function(filename) {
 		data: {data:data},
 		context: document.body,
 		success: function(data, textStatus, jqXHR) {
-			alert(data)
+			//alert(data)
 		}
 	})
 }
@@ -24,24 +24,8 @@ var LoadContents = function(filename) {
 		url: "load/"+filename,
 		context: document.body,
 		success: function(data, textStatus, jqXHR) {
-			currentFile = filename
-			$("file").effect("highlight", {color:"#b1b1b1"}, 3000)
-			aceEditor.getSession().setValue(data)
-			
-			toks = filename.split("/")
-			basename = toks[toks.length-1]
-		   
-			if (basename == "Makefile" || basename == "makefile") {
-				var mode = require("ace/mode/python").Mode
-				aceEditor.getSession().setMode(new mode())
-			} else if (/\.template$/.test(basename)) {
-				var mode = require("ace/mode/html").Mode
-				aceEditor.getSession().setMode(new mode())
-			}
-			else {
-				var mode = require("ace/mode/c_cpp").Mode
-				aceEditor.getSession().setMode(new mode())
-			}
+		    currentFile = filename
+		    aceEditor.getSession().setValue(data)
 		}
 	});
 }

@@ -10,11 +10,6 @@
 				SaveCurrentContents();
 			}
 		);
-		$( ".open" ).click(
-			function() {
-				ScanWorkspace()
-			}
-		);
 	});
 </script>
 
