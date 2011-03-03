@@ -111,7 +111,7 @@ var ListSuccess = function(data, textStatus, jqXHR) {
 	*/
 	
 	$("#filebrowsertree").html(newhtml)
-	$("#filebrowsertree").jqTreeTable(fileMapping, opts)
+	$("#filebrowsertree").jqTreeTable(fileMapping, jq_defaults)
 }
 
 $(document).ready(function(){
