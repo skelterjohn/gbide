@@ -1,10 +1,7 @@
 
 <script type="text/javascript">
 $(document).ready(function()  {
-	$("#filebrowser").treeTable()
-	//$("#pkgbrowser").treeTable()
 	$("#browsertabs").tabs()
- 
 });  
 </script>
 
@@ -17,7 +14,8 @@ $(document).ready(function()  {
 	
 	<div id="tabs-file">
 		<table class="files" id="filebrowser">
-		<tr class="file" id="dir-top"><td>workspace</td></tr>
+			<tbody id="filebrowsertree">
+			</tbody>
 		</table>
 	</div>
 		

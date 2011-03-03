@@ -25,30 +25,17 @@ func ListHandler(ctx *web.Context, dir string) {
 		return
 	}
 	
-	dirid := "dir-"+strings.Replace(dir, "/", "-", -1)
-	if dir == "." {
-		dirid = "dir-top"
-	}
-	class := "child-of-"+dirid
-	
-	fmt.Fprintf(ctx, "<tr class=\"file\" id=\"dir-top\"><td>workspace</td></tr>\n")
+	fmt.Fprintf(ctx, ":%s\n", dir)
+
 	for _, file := range files {
 		if strings.HasPrefix(file.Name, ".") {
 			continue
 		}
-		fileid := "file-"
 		if file.IsDirectory() {
-			fileid = "dir-"
+			fmt.Fprintf(ctx, ">")
 		}
-		
 		fullname := path.Join(dir, file.Name)
-		
-		fileid += strings.Replace(fullname, "/", "-", -1)
-		if file.IsDirectory() {
-			fmt.Fprintf(ctx, "<tr id=\"%s\" class=\"file %s\"><td>%s</td></tr>\n", fileid, class, file.Name)
-		} else {
-			fmt.Fprintf(ctx, "<tr id=\"%s\" class=\"file %s\"><td><a href='javascript:LoadContents(\"%s\")'>%s</a></td></tr>\n", fileid, class, fullname, file.Name)
-		}
+		fmt.Fprintf(ctx, "%s\t%s\n", fullname, file.Name)
 	}
 	return
 }

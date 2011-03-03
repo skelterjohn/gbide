@@ -14,3 +14,10 @@
 #pkgbrowsertree td {
 	font: normal 8pt Arial; padding: 0px 0px 0px 0px; cursor: pointer;
 }
+
+#filebrowsertree tr {
+	padding: 0px 0px 0px 0px;
+}
+#filebrowsertree td {
+	font: normal 8pt Arial; padding: 0px 0px 0px 0px; cursor: pointer;
+}

@@ -17,6 +17,7 @@
 	<link href="css/build.css" rel="stylesheet" media="all" type="text/css" />
 
 	<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery-ui-1.8.10.custom.min.js" type="text/javascript" charset="utf-8"></script>
 	
 	<script src="ace/src/ace.js" type="text/javascript" charset="utf-8"></script>
 	<script src="ace/src/theme-twilight.js" type="text/javascript" charset="utf-8"></script>
@@ -25,9 +26,8 @@
 	<script src="ace/src/mode-html.js" type="text/javascript" charset="utf-8"></script>
 	<script src="treetable/jquery.treeTable.min.js" type="text/javascript"></script>
 	<script src="jqtreetable/jqtreetable.js" type="text/javascript"></script>
-	<script src="js/jquery.mousewheel.js" type="text/javascript"></script>
 	<script src="js/jquery.jscrollpane.min.js type="text/javascript"></script>
-	<script src="js/jquery-ui-1.8.10.custom.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.mousewheel.js" type="text/javascript"></script>
 	<script src="js/sprintf-0.7-beta1.js" type="text/javascript" charset="utf-8"></script>
 	
 	<script src="js/io.js" type="text/javascript" charset="utf-8"></script>
@@ -46,4 +46,14 @@
 	<div class="container">{{Editor}}</div>
 </div>
 </body>
-</html>
+</html>    
+<script>
+var aceEditor = null
+window.onload = function() {
+    aceEditor = ace.edit("editor");
+	aceEditor.setTheme("ace/theme/twilight");
+    var mode = require("ace/mode/c_cpp").Mode;
+    aceEditor.getSession().setMode(new mode());
+	ListDir(".")
+};
+</script>
