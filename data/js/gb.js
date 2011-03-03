@@ -39,7 +39,17 @@ var ScanSuccess = function(data, textStatus, jqXHR) {
 	$("#pkgbrowsertree").html(newhtml)
 	//aceEditor.getSession().setValue(newhtml+"\n"+(mapping.join(",")))
 	
-	$("#pkgbrowsertree").jqTreeTable(mapping, jq_defaults);
+	var opts = {
+	openImg: "jqtreetable/images/minus.gif",
+	shutImg: "jqtreetable/images/plus.gif",
+	leafImg: "jqtreetable/images/tv-item.gif",
+	lastOpenImg: "jqtreetable/images/minus.gif",
+	lastShutImg: "jqtreetable/images/plus.gif",
+	lastLeafImg: "jqtreetable/images/tv-item-last.gif",
+	vertLineImg: "jqtreetable/images/blank.gif",
+	blankImg: "jqtreetable/images/blank.gif"
+	};
+	$("#pkgbrowsertree").jqTreeTable(mapping, opts);
 	
 	
 }
