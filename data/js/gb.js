@@ -24,7 +24,7 @@ var ScanSuccess = function(data, textStatus, jqXHR) {
 			section++;
 			
 			iddir = dir.replace("/", "-")
-			newhtml += sprintf("<tr id=\"file-%s\"><td>%s</td></tr>\n", iddir, label)
+			newhtml += sprintf("<tr class=\"file\" id=\"file-%s\"><td>%s</td></tr>\n", iddir, label)
 			
 			file = 1
 		}
@@ -34,7 +34,7 @@ var ScanSuccess = function(data, textStatus, jqXHR) {
 			
 			iddir = dir.replace("/", "-")
 			idname = iddir+"-"+filename.replace("/", "-")
-			newhtml += sprintf("<tr id=\"file-%s\" class=\"child-of-file-%s\"><td><a id=\"%s\" href='javascript:LoadContents(\"%s\")'>%s</a></td></tr>\n", idname, iddir, fullname, fullname, filename)
+			newhtml += sprintf("<tr id=\"file-%s\" class=\"file child-of-file-%s\"><td><a id=\"%s\" href='javascript:LoadContents(\"%s\")'>%s</a></td></tr>\n", idname, iddir, fullname, fullname, filename)
 			file++
 		}
 	}

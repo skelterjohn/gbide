@@ -8,20 +8,37 @@ $(document).ready(function()  {
 });  
 </script>
 
+
+<style type="text/css" media="screen">
+  .files {
+    font-size: 14px;
+  }
+
+  .file:hover {
+	background-color: #AACCFF;
+  }
+  a {
+    text-decoration:none
+  } 
+  .fileheaders {
+    font-size: 14px;
+  }
+</style>
+
 <div id="browsertabs">
 	<ul>
-		<li><a href="#tabs-file">Files</a></li>
-		<li><a href="#tabs-pkg">Pkg</a></li>
+		<li><a class="fileheaders" href="#tabs-file">Files</a></li>
+		<li><a class="fileheaders" href="#tabs-pkg">Pkg</a></li>
 	</ul>
 	
 	<div id="tabs-file">
-		<table id="filebrowser">
-		<tr id="dir-top"><td>workspace</td></tr>
+		<table class="files" id="filebrowser">
+		<tr class="file" id="dir-top"><td>workspace</td></tr>
 		</table>
 	</div>
 
 	<div id="tabs-pkg">
-		<table id="pkgbrowser">
+		<table class="files" id="pkgbrowser">
 		</table>
 	</div>
 
