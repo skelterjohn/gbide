@@ -5,6 +5,6 @@ import (
 )
 
 func main() {
-	//gbide.LaunchBrowser("http://localhost:9090")
+	gbide.LaunchBrowser("http://localhost:9090")
 	gbide.RunServer(9090)
 }
