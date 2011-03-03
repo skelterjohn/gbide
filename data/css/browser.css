@@ -1,0 +1,12 @@
+
+
+.files a {
+	text-decoration:none;
+}
+.fileheaders {
+	font: normal 10pt Arial;
+}
+
+#pkgbrowsertree td {
+	 font: normal 8pt Arial; padding: 0px 10px 0px 0px; cursor: pointer;
+}

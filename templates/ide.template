@@ -13,8 +13,10 @@
   
   <link rel="stylesheet" href="css/ui-lightness/jquery-ui-1.8.10.custom.css">
   <link href="treetable/css/jquery.treeTable.css" rel="stylesheet" type="text/css" />
-
   <link type="text/css" href="css/jquery.jscrollpane.css" rel="stylesheet" media="all" />
+  
+  <link type="text/css" href="css/browser.css" rel="stylesheet" media="all" />
+  
   <script type="text/javascript" src="js/jquery.mousewheel.js"></script>
   <script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
 

@@ -13,35 +13,19 @@ $(document).ready(function()  {
 </script>
 
 
-<style type="text/css" media="screen">
-
-	.files a {
-		text-decoration:none;
-	}
-	.fileheaders {
-		font-size: 14px;
-	}
-
-	#pkgbrowsertree td {
-		font: normal 10pt Arial; 
-		padding: 0px 0px 0px 0px;
-		cursor: pointer;
-	}
-</style>
-
 <div id="browsertabs">
 	<ul>
 		<li><a class="fileheaders" href="#tabs-file">Files</a></li>
 		<li><a class="fileheaders" href="#tabs-pkg">Pkg</a></li>
 	</ul>
 	
-	<div class="scrollable" id="tabs-file">
+	<div id="tabs-file">
 		<table class="files" id="filebrowser">
 		<tr class="file" id="dir-top"><td>workspace</td></tr>
 		</table>
 	</div>
 		
-	<div class="scrollable" id="tabs-pkg">
+	<div id="tabs-pkg">
 		<table class="files" id="pkgbrowser">
 			<tbody id="pkgbrowsertree">
 			</tbody>

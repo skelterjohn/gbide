@@ -75,6 +75,7 @@ blankImg: "jqtreetable/images/blank.gif"
   	},
     cset = function (n,v) {
   		jq.unique(v);
+		//something about cookies is broken
 	  	//document.cookie = n+"="+v.join("|")+";";
 	  };
     for (var x=0,xl=map.length; x<xl;x++){//From map of parents, get map of kids
