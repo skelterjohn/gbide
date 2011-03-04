@@ -18,10 +18,8 @@ $(document).ready(function()  {
 	</div>
 		
 	<div id="tabs-pkg">
-		<table class="files" id="pkgbrowser">
-			<tbody id="pkgbrowsertree">
-			</tbody>
-		</table>
+		<div class="files" id="pkgbrowser">
+		</div>
 	</div>
 
 </div>

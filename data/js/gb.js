@@ -2,16 +2,16 @@
 var dir = "";
 
 var ScanSuccess = function(data, textStatus, jqXHR) {
-	newhtml = ""
 	lines = data.split("\n")
 	
-	mapping = []
-	lastpkg = 0
+	xml = "<root>"
+	
+	var curtarget
 	
 	for (i=0; i<lines.length-1; i++) {
 		tokens = lines[i].split(" ")
 		if (tokens[0] == "in") {
-			dir = tokens[1].slice(0, tokens[1].length-1)
+			curtarget = tokens[1].slice(0, tokens[1].length-1)
 			kind = tokens[2]
 			target = tokens[3]
 			status = tokens[4]
@@ -20,38 +20,47 @@ var ScanSuccess = function(data, textStatus, jqXHR) {
 			
 			label = kind+" "+target
 			
-			newhtml += sprintf("<tr><td>%s</td></tr>\n", label)
+			xml += sprintf('<item path="%s" dir="true" state="closed" id="%s">'+
+						   '<content>'+
+						   '<name>%s</name>'+
+						   '</content>'+
+						   '</item>\n', curtarget, curtarget, label)
 			
-			mapping = mapping.concat([0])
-			lastpkg = i+1
 
 		}
 		else {
 			filename = tokens[0].slice(1)
-			fullname = dir+"/"+filename
+			fullname = curtarget+"/"+filename
 			
-			newhtml += sprintf("<tr><td><a href='javascript:LoadContents(\"%s\")'>%s</a></td></tr>\n", fullname, filename)
+			xml += sprintf('<item path="%s" dir="false" id="%s" parent_id="%s">'+
+						   '<content>'+
+						   '<name>%s</name>'+
+						   '</content>'+
+						   '</item>\n', fullname, fullname, curtarget, filename)
 			
-			mapping = mapping.concat([lastpkg])
 		}
 	}
-	//mapping = [0,1,1,1,0,5,5,5,0,9,9,9,0,13,13,0,16,16]
-	$("#pkgbrowsertree").html(newhtml)
-	//aceEditor.getSession().setValue(newhtml+"\n"+(mapping.join(",")))
-	
-	var opts = {
-	openImg: "jqtreetable/images/minus.gif",
-	shutImg: "jqtreetable/images/plus.gif",
-	leafImg: "jqtreetable/images/tv-item.gif",
-	lastOpenImg: "jqtreetable/images/minus.gif",
-	lastShutImg: "jqtreetable/images/plus.gif",
-	lastLeafImg: "jqtreetable/images/tv-item-last.gif",
-	vertLineImg: "jqtreetable/images/blank.gif",
-	blankImg: "jqtreetable/images/blank.gif"
-	};
-	$("#pkgbrowsertree").jqTreeTable(mapping, opts);
 	
 	
+	xml += "</root>"
+	
+	$("#pkgbrowser").jstree({ 
+		"xml_data" : {
+			"data" : xml
+		},
+
+		"ui" : {
+			"select_limit" : 1,
+			"selected_parent_close" : "select_parent",
+		},
+
+		"plugins" : [ "themes", "xml_data", "ui" ]
+	});	  
+	$("#pkgbrowser").jstree("set_theme","apple");
+	$("#pkgbrowser").jstree("toggle_icons")
+	$("#pkgbrowser").jstree("toggle_dots")
+	
+	$("#pkgbrowser").delegate('a', 'click', ClickFileTree); 
 }
 
 var ScanWorkspace = function() {
