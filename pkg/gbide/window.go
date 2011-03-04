@@ -86,6 +86,6 @@ func RunServer(port int) {
 	web.Post("/save/(.*)", editor.SaveHandler)
 	web.Get("/load/(.*)", editor.LoadHandler)
 	web.Post("/gb", build.GBHandler)
-	web.Get("/ls/(.*)", browse.ListHandler)
+	web.Get("/ls/(.*)", browse.ListHandlerXML)
 	web.Run(fmt.Sprintf("0.0.0.0:%d", port))
 }

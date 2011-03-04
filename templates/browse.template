@@ -13,10 +13,8 @@ $(document).ready(function()  {
 	</ul>
 	
 	<div id="tabs-file">
-		<table class="files" id="filebrowser">
-			<tbody id="filebrowsertree">
-			</tbody>
-		</table>
+		<div class="files" id="filebrowser">
+		</div>
 	</div>
 		
 	<div id="tabs-pkg">
