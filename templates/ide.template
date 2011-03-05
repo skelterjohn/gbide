@@ -15,6 +15,9 @@
 	<link href="css/browser.css" rel="stylesheet" media="all" type="text/css" />
 	<link href="css/build.css" rel="stylesheet" media="all" type="text/css" />
 	<link href="jsTree/themes/apple/style.css" rel="stylesheet" media="all" type="text/css" />
+	<link href="css/jScrollPane.css" rel="stylesheet" type="text/css" media="all" />
+
+
 
 	<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/jquery-ui-1.8.10.custom.min.js" type="text/javascript" charset="utf-8"></script>
@@ -28,6 +31,8 @@
 	<script src="js/jquery.mousewheel.js" type="text/javascript"></script>
 	<script src="js/sprintf-0.7-beta1.js" type="text/javascript" charset="utf-8"></script>
 	<script src="jsTree/jquery.jstree.js" type="text/javascript"></script>
+	<script src="js/jquery.mousewheel.js" type="text/javascript"></script>
+	<script src="js/jScrollPane.js" type="text/javascript"></script>
 	
 	<script src="js/io.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/gb.js" type="text/javascript" charset="utf-8"></script>

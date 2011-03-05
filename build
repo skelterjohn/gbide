@@ -20,3 +20,9 @@ echo Building \
 fi
 
 # The makefiles above are invoked in topological dependence order
+
+echo "./bin/gbide" > run
+chmod +x run
+echo
+echo "To run, > ./run"
+echo "And connect a web browser to http://localhost:9090"

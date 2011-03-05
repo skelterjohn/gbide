@@ -13,11 +13,13 @@ $(document).ready(function()  {
 	</ul>
 	
 	<div id="tabs-file">
-		<div class="files" id="filebrowser">
+		<div id="filescroll" class="scroll-pane">
+			<div class="files" id="filebrowser">
+			</div>
 		</div>
 	</div>
 		
-	<div id="tabs-pkg">
+	<div id="tabs-pkg" class="scroll-pane">
 		<div class="files" id="pkgbrowser">
 		</div>
 	</div>

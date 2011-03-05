@@ -7,17 +7,8 @@
 	font: normal 10pt Arial;
 }
 
-
-#pkgbrowsertree tr {
-	padding: 0px 0px 0px 0px;
-}
-#pkgbrowsertree td {
-	font: normal 8pt Arial; padding: 0px 0px 0px 0px; cursor: pointer;
-}
-
-#filebrowsertree tr {
-	padding: 0px 0px 0px 0px;
-}
-#filebrowsertree td {
-	font: normal 8pt Arial; padding: 0px 0px 0px 0px; cursor: pointer;
+#filescroll {
+	top: 0px;
+	bottom: 0px;
+	height:500px;
 }

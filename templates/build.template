@@ -5,7 +5,6 @@ $(function() {
 	$( "button", ".build-button" ).button();
 	$( "#save" ).click(
 		function() {
-			alert("ok");
 			SaveCurrentContents();
 		}
 	);
