@@ -18,6 +18,7 @@ html, body {
 	right: 0px;
 	bottom: 0px;
 	width: 200px;
+	height: 100%;
 }
 .editor-container {
 	height: 100%;

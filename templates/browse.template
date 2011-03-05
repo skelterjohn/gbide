@@ -12,10 +12,8 @@ $(document).ready(function()  {
 		<li><a class="fileheaders" href="#tabs-pkg">Pkg</a></li>
 	</ul>
 	
-	<div id="tabs-file">
-		<div id="filescroll" class="scroll-pane">
-			<div class="files" id="filebrowser">
-			</div>
+	<div id="tabs-file" class="scroll-pane">
+		<div class="files" id="filebrowser">
 		</div>
 	</div>
 		

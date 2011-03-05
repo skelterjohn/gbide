@@ -32,7 +32,7 @@ var LoadFileBrowser = function(){
 	
 	$("#filebrowser").delegate('a', 'click', ClickFileTree) 
 	
-	$("#filescroll").jScrollPane()
+	//$("#filescroll").jScrollPane()
 }
 
 var ClickFileTree = function(e) {
