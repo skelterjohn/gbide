@@ -33,6 +33,9 @@ func RunExternalDump(cmd, wd string, argv []string, dump io.Writer) (err os.Erro
 	}
 	if p != nil {
 		src := p.Stdout
+		
+		_, err = io.Copy(dump, src)
+		/*
 		buffer := make([]byte, 1024)
 		for {
 			n, cpErr := src.Read(buffer)
@@ -44,13 +47,18 @@ func RunExternalDump(cmd, wd string, argv []string, dump io.Writer) (err os.Erro
 				break
 			}
 		}
-
+		*/
+		if err != nil {
+			return
+		}
+		
 		var wmsg *os.Waitmsg
 		wmsg, err = p.Wait(0)
 		if wmsg.ExitStatus() != 0 {
 			err = os.NewError(fmt.Sprintf("%v: %s\n", argv, wmsg.String()))
 			return
 		}
+        
 		if err != nil {
 			return
 		}

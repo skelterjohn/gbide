@@ -11,6 +11,8 @@ var LoadFileBrowser = function(){
 	}
 	
 	$("#filebrowser").jstree({ 
+		"core" : { "animation" : 0 },
+							 
 		"xml_data" : {
 			"ajax" : {
 				"url" : UrlFinder,

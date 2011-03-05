@@ -3,17 +3,14 @@
 <script>
 $(function() {
 	$( "button", ".build-button" ).button();
-	$( "#save" ).click(
-		function() {
-			SaveCurrentContents();
-		}
-	);
+	$( "#save" ).click(function() {SaveCurrentContents();});
+	$( "#build" ).click(function() {BuildPkgs();});
 });
 </script>
 
 <div class="build-button">
 <button id="save">Save</button>
-<button>Ok</button>
+<button id="build">Build</button>
 </div>
 
 </center>

@@ -45,6 +45,8 @@ var ScanSuccess = function(data, textStatus, jqXHR) {
 	xml += "</root>"
 	
 	$("#pkgbrowser").jstree({ 
+		"core" : { "animation" : 0 },
+							
 		"xml_data" : {
 			"data" : xml
 		},
@@ -73,6 +75,21 @@ var ScanWorkspace = function() {
 		success: ScanSuccess
 	});
 }
+
+var BuildSuccess = function(data, textStatus, jqXHR) {
+	aceEditor.getSession().setValue(data)
+}
+
+var BuildPkgs = function() {
+	$.ajax({
+		type: "POST",
+		url: "gb",
+		data: {args:"."},
+		context: document.body,
+		success: BuildSuccess
+	});
+}
+
 $(document).ready(function(){
 	ScanWorkspace()
 });
