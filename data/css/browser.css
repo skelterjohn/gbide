@@ -11,7 +11,6 @@
 }
 .scroll-pane {
 	top: 0px;
-	bottom: 0px;
 	overflow:auto;
 	height: 100%;
 }

@@ -41,13 +41,13 @@
 
 <body>
 <div class="build-container">
-    <div class="container">{{BuildBar}}</div>
+    {{BuildBar}}
 </div>
 <div class="browse-container">
-	<div class="container">{{BrowseBar}}</div>
+	{{BrowseBar}}
 </div>
 <div class="editor-container">
-	<div class="container">{{Editor}}</div>
+	{{Editor}}
 </div>
 </body>
 </html>    
