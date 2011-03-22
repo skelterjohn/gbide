@@ -5,6 +5,7 @@ import (
 	"path"
 	"path/filepath"
 	"fmt"
+	"sort"
 	"bytes"
 	"bufio"
 	"strings"
@@ -14,17 +15,18 @@ import (
 
 var (
 	ListFileFormat = 
-`<item path="{LongName}" dir="false" id="{ID}"{.section ParentID} parent_id="{@}"{.end}>
-	<content>
-		<name>{ShortName}</name>
-	</content>
-</item>
+`   <item path="{LongName}" dir="false" id="{ID}"{.section ParentID} parent_id="{@}"{.end}>
+	    <content>
+		    <name>{ShortName}</name>
+	    </content>
+    </item>
 `
-	ListDirFormat = `<item path="{LongName}" dir="true" state="closed" id="{ID}"{.section ParentID} parent_id="{@}"{.end}>
-	<content>
-		<name>{ShortName}</name>
-	</content>
-</item>
+	ListDirFormat = 
+`   <item path="{LongName}" dir="true" state="closed" id="{ID}"{.section ParentID} parent_id="{@}"{.end}>
+	    <content>
+		    <name>{ShortName}</name>
+	    </content>
+    </item>
 `
 )
 
@@ -38,6 +40,22 @@ type ListEntry struct {
 	LongName, ShortName string
 }
 
+type Target struct {
+	Head ListEntry
+	Srcs []ListEntry
+}
+
+type TargetList []Target
+func (this TargetList) Len() int {
+	return len(this)
+}
+func (this TargetList) Less(i, j int) bool {
+	return this[i].Head.ShortName < this[j].Head.ShortName
+}
+func (this TargetList) Swap(i, j int) {
+	this[i], this[j] = this[j], this[i]
+}
+
 func GBListHandler(ctx *web.Context) {
 	args := []string{"gb", "-L"}
 	fmt.Printf("%v\n", args)
@@ -45,10 +63,12 @@ func GBListHandler(ctx *web.Context) {
 	RunExternalDump(GBCMD, CWD, args, reader)
 	bin := bufio.NewReader(reader)
 	
+	var targets TargetList
 	
 	fmt.Fprintf(ctx, "<root>\n")
 	
 	dir := ""
+	kind := ""
 	for {
 		line, _ := bin.ReadString('\n')
 		line = strings.TrimSpace(line)
@@ -60,22 +80,38 @@ func GBListHandler(ctx *web.Context) {
 		
 			tokens := strings.Split(line, " ", -1)
 			dir = tokens[1][:len(tokens[1])-1]
-			kind := tokens[2]
-			println(tokens[3])
+			kind = tokens[2]
 			name := strings.Trim(tokens[3], "\"")
 			
 			label := fmt.Sprintf(`%s %s`, kind, name)
 			
-			le := ListEntry{ID:dir, ParentID:"", LongName:"", ShortName:label}
+			le := ListEntry{ID:dir, ParentID:"", LongName:dir, ShortName:label}
 			
-			_ = ListDirTemplate.Execute(ctx, le)
+			targets = append(targets, Target{Head:le})
+			
+			
+			//_ = ListDirTemplate.Execute(ctx, le)
 		} else {
 			src := strings.TrimSpace(line)
-			le := ListEntry{ID:src, ParentID:dir, LongName:filepath.Join(dir, src), ShortName:src}
+			le := ListEntry{ID:filepath.Join(dir, src), ParentID:dir, LongName:filepath.Join(dir, src), ShortName:src}
 			
-			_ = ListFileTemplate.Execute(ctx, le)
+			srcs := targets[len(targets)-1].Srcs
+			srcs = append(srcs, le)
+			targets[len(targets)-1].Srcs = srcs
+			
+			//_ = ListFileTemplate.Execute(ctx, le)
 		}
 	}
+	
+	sort.Sort(targets)
+	
+	for _, target := range targets {
+		ListDirTemplate.Execute(ctx, target.Head)
+		for _, src := range target.Srcs {
+			ListFileTemplate.Execute(ctx, src)
+		}
+	}
+	
 	fmt.Fprintf(ctx, "</root>\n")
 	
 }

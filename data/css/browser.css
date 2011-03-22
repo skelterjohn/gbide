@@ -1,16 +1,7 @@
 
-
 .files a {
 	text-decoration:none;
 }
-.fileheaders {
-	font: normal 10pt Arial;
-}
-#browsertabs {
-	height: 100%;
-}
-.scroll-pane {
-	top: 0px;
-	overflow:auto;
-	height: 100%;
+.files {
+	font: normal 9pt Monaco;
 }
