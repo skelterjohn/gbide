@@ -1,0 +1,18 @@
+<center>
+
+<script>
+$(function() {
+	$("button", ".choose-button").button();
+	$("#file").click(function() {chooseBrowser("#filebrowser");});
+	$("#pkg").click(function() {chooseBrowser("#pkgbrowser");});
+	chooseBrowser("#filebrowser")
+});
+
+</script>
+
+<div class="choose-button">
+<button id="file">file</button>
+<button id="pkg">pkg</button>
+</div>
+
+</center>

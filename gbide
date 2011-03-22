@@ -1,0 +1,4 @@
+export cwd=`pwd`
+cd /Users/jasmuth/Dropbox/gospace/gbide
+bin/gbide-server $cwd
+cd -
