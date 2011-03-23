@@ -3,12 +3,21 @@
 
 include $(GOROOT)/src/Make.inc
 
-TARG=gbide
+TARG=gbide-server
 GOFILES=\
-	gbide.go\
+	browse.go\
+	build.go\
+	editor.go\
+	files.go\
+	gbide-server.go\
+	gbrun.go\
+	pkginfo.go\
+	save.go\
+	templates.go\
+	window.go\
 
 # gb: this is the local install
-GBROOT=../..
+GBROOT=..
 
 # gb: compile/link against local install
 GC+= -I $(GBROOT)/_obj
@@ -23,6 +32,3 @@ include $(GOROOT)/src/Make.cmd
 $(GBROOT)/bin/$(TARG): $(TARG)
 	mkdir -p $(dir $@); cp -f $< $@
 command: $(GBROOT)/bin/$(TARG)
-
-# gb: local dependencies
-$(TARG): $(GBROOT)/_obj/gbide.a

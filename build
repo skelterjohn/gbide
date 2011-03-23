@@ -6,23 +6,11 @@ if [ "$1" = "goinstall" ]; then
 echo Running goinstall \
 && echo "goinstall github.com/hoisie/web.go" \
 && goinstall github.com/hoisie/web.go \
-&& echo "goinstall gonicetrace.googlecode.com/hg/nicetrace" \
-&& goinstall gonicetrace.googlecode.com/hg/nicetrace \
 
 else
 echo Building \
-&& echo "(in pkg/build)" && cd pkg/build && make $1 && cd - > /dev/null \
-&& echo "(in pkg/browse)" && cd pkg/browse && make $1 && cd - > /dev/null \
-&& echo "(in pkg/editor)" && cd pkg/editor && make $1 && cd - > /dev/null \
-&& echo "(in pkg/gbide)" && cd pkg/gbide && make $1 && cd - > /dev/null \
-&& echo "(in cmd/gbide)" && cd cmd/gbide && make $1 && cd - > /dev/null \
+&& echo "(in gbide-server)" && cd gbide-server && make $1 && cd - > /dev/null \
 
 fi
 
 # The makefiles above are invoked in topological dependence order
-
-echo "./bin/gbide" > run
-chmod +x run
-echo
-echo "To run, > ./run"
-echo "And connect a web browser to http://localhost:9090"
