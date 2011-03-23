@@ -1,0 +1,20 @@
+
+
+<div id="dirname">
+	In {{Dir}}: <b>{{Target}}</b>
+</div>
+<div id="package">
+	package {{Name}}
+</div>
+<div id="importblock">
+	<div id="import">
+	imports:
+	</div>
+	<div id="imports">
+		{{.repeated section Deps}}
+		<div class="pkginfo-import">
+			{{@}}
+		</div>
+		{{.end}}
+	</div>
+</div>

@@ -68,11 +68,11 @@ var ClickFileTree = function(e) {
 		fileNodes[path] = n
 		LoadContents(path)
 		$("#editor").show()
-		$("#godoc").hide()
+		$("#pkginfo").hide()
 	} else {
-		LoadGodoc(n.attr("path"))
+		LoadPackageInfo(n.attr("path"))
 		$("#editor").hide()
-		$("#godoc").show()
+		$("#pkginfo").show()
 	}
 }
 

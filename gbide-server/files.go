@@ -9,30 +9,7 @@ import (
 	"bytes"
 	"bufio"
 	"strings"
-	"template"
 	"github.com/hoisie/web.go"
-)
-
-var (
-	ListFileFormat = 
-`   <item path="{LongName}" dir="false" id="{ID}"{.section ParentID} parent_id="{@}"{.end}>
-	    <content>
-		    <name>{ShortName}</name>
-	    </content>
-    </item>
-`
-	ListDirFormat = 
-`   <item path="{LongName}" dir="true" state="closed" id="{ID}"{.section ParentID} parent_id="{@}"{.end}>
-	    <content>
-		    <name>{ShortName}</name>
-	    </content>
-    </item>
-`
-)
-
-var (
-	ListFileTemplate = template.MustParse(ListFileFormat, nil)
-	ListDirTemplate = template.MustParse(ListDirFormat, nil)
 )
 
 type ListEntry struct {
@@ -84,6 +61,7 @@ func GBListHandler(ctx *web.Context) {
 			name := strings.Trim(tokens[3], "\"")
 			
 			label := fmt.Sprintf(`%s %s`, kind, name)
+			label = dir
 			
 			le := ListEntry{ID:dir, ParentID:"", LongName:dir, ShortName:label}
 			
@@ -92,6 +70,9 @@ func GBListHandler(ctx *web.Context) {
 			
 			//_ = ListDirTemplate.Execute(ctx, le)
 		} else {
+			if len(targets) == 0 {
+				continue
+			}
 			src := strings.TrimSpace(line)
 			le := ListEntry{ID:filepath.Join(dir, src), ParentID:dir, LongName:filepath.Join(dir, src), ShortName:src}
 			

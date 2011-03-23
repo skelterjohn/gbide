@@ -103,5 +103,6 @@ func RunServer(port int) {
 	web.Post("/gb", GBHandler)
 	web.Get("/ls/(.*)", ListHandlerXML)
 	web.Get("/gblist", GBListHandler)
+	web.Get("/gbpkg/(.*)", PkgInfoHandler)
 	web.Run(fmt.Sprintf("0.0.0.0:%d", port))
 }

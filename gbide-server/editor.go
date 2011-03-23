@@ -2,21 +2,10 @@ package main
 
 import (
 	"os"
-	"template"
 	"io"
 	"bytes"
 	"gonicetrace.googlecode.com/hg/nicetrace"
 )
-
-const EditorTemplatePath = "templates/editor.template"
-
-var EditorT *template.Template
-
-func init() {
-	EditorT = template.New(nil)
-	EditorT.SetDelims("{{", "}}")
-	EditorT.ParseFile(EditorTemplatePath)
-}
 
 type Source struct {
 	Path, Data string

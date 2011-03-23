@@ -11,7 +11,6 @@ var SaveContents = function(filename) {
 		data: {data:data},
 		context: document.body,
 		success: function(data, textStatus, jqXHR) {
-			touchedFiles[filename] = false
 			fileNodes[currentFile].css("background", oldColors[currentFile])
 		}
 	})
@@ -19,7 +18,6 @@ var SaveContents = function(filename) {
 
 var currentFile = "";
 var openFiles = {}
-var touchedFiles = {}
 var fileNodes = {}
 var oldColors = {}
 
@@ -27,19 +25,39 @@ var LoadGodoc = function(path) {
     $("#godoc").html('GODOC for '+path)
 }
 
+var LoadPackageInfo = function(path) {
+	$.ajax({
+		type: "GET",
+		url: "gbpkg/"+path,
+		context: document.body,
+		success: function(data, textStatus, jqXHR) {
+			$("#pkginfo").html(data)
+			$("#pkginfo").show()
+		}
+	});
+}
+
 disableEdit = false
 var EditCallback = function() {
 	if (disableEdit || currentFile == "") {
 		return
 	}
-	touchedFiles[currentFile] = true
 	oldColors[currentFile] = fileNodes[currentFile].css("background")
 	fileNodes[currentFile].css("background", "orange")
 }
 
+var lineNumbers = {}
 var LoadDataToEditor = function(data, filename) {
+	
+	
+	
 	currentFile = filename
+	aceEditor.gotoLine(0)
 	aceEditor.getSession().setValue(data)
+	if (lineNumbers[filename] == null) {
+		lineNumbers[filename] = 1
+	}
+	aceEditor.gotoLine(lineNumbers[filename])
 	disableEdit = false
 	openFiles[filename] = data
 }
@@ -66,6 +84,10 @@ var LoadContents = function(filename) {
 			url: "load/"+filename,
 			context: document.body,
 			success: function(data, textStatus, jqXHR) {
+			    oldColor = oldColors[filename]
+				if (oldColor != null) {
+					fileNodes[filename].css("background", oldColor)
+				}
 				LoadDataToEditor(data, filename)
 			}
 		});

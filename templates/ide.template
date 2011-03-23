@@ -3,6 +3,7 @@
 	<link href="css/ide.css" rel="stylesheet" media="all" type="text/css" />
 	<link href="css/build.css" rel="stylesheet" media="all" type="text/css" />
 	<link href="css/browser.css" rel="stylesheet" media="all" type="text/css" />
+	<link href="css/pkginfo.css" rel="stylesheet" media="all" type="text/css" />
 	<link href="css/ui-lightness/jquery-ui-1.8.10.custom.css" rel="stylesheet" />
 	<link href="jsTree/themes/apple/style.css" rel="stylesheet" media="all" type="text/css" />
 
