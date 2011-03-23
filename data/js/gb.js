@@ -30,7 +30,7 @@ var ScanWorkspace = function() {
 }
 
 var BuildSuccess = function(data, textStatus, jqXHR) {
-	aceEditor.getSession().setValue(data)
+	
 }
 
 var BuildPkgs = function() {
