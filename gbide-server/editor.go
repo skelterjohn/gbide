@@ -4,7 +4,6 @@ import (
 	"os"
 	"io"
 	"bytes"
-	"gonicetrace.googlecode.com/hg/nicetrace"
 )
 
 type Source struct {
@@ -12,7 +11,6 @@ type Source struct {
 }
 
 func OpenFile(file string) (code string) {
-	defer nicetrace.Print()
 
 	data, err := ReadFile(file)
 	
