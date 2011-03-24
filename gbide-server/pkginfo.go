@@ -56,7 +56,7 @@ func PkgInfoHandler(ctx *web.Context, dir string) {
 			depline := tokens[2]
 			deps := strings.Split(depline, " ", -1)
 			for _, dep := range deps {
-				//dep = strings.Trim(dep, "\"")
+				dep = strings.Trim(dep, "\"")
 				if dep == "" {
 					continue
 				}

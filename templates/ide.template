@@ -1,7 +1,7 @@
 <html lang="en">
 
 	<link href="css/ide.css" rel="stylesheet" media="all" type="text/css" />
-	<link href="css/build.css" rel="stylesheet" media="all" type="text/css" />
+	<link href="css/buildbar.css" rel="stylesheet" media="all" type="text/css" />
 	<link href="css/browser.css" rel="stylesheet" media="all" type="text/css" />
 	<link href="css/pkginfo.css" rel="stylesheet" media="all" type="text/css" />
 	<link href="css/ui-lightness/jquery-ui-1.8.10.custom.css" rel="stylesheet" />
@@ -36,9 +36,6 @@
 		</div>
 		<div class="col fixdiv" id="outline-col">
 			Outline
-		</div>
-		<div class="fixdiv" id="footer">
-			Footer
 		</div>
 	</body>
 

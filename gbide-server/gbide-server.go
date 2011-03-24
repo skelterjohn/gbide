@@ -16,5 +16,6 @@ func main() {
 	
 	fmt.Printf("running in %s\n", CWD)
 	
+	//RunGodoc()
 	RunServer(9090)
 }

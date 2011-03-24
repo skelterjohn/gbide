@@ -13,7 +13,7 @@
 	<div id="imports">
 		{{.repeated section Deps}}
 		<div class="pkginfo-import">
-			{{@}}
+			<a href="http://localhost:6060/pkg/{{@}}" target="godoc">"{{@}}"</a>
 		</div>
 		{{.end}}
 	</div>

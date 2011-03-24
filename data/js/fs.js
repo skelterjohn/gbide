@@ -6,7 +6,7 @@ var NewFile = function(obj) {
 
 var LoadFileBrowser = function(){
 	
-	UrlFinder = function(node) {
+	var UrlFinder = function(node) {
 		if (node == -1) {
 			return "/ls/"
 		} else {
@@ -61,11 +61,37 @@ var LoadFileBrowser = function(){
 	setBrowsers()
 }
 
+var GetIDSelector = function(filename) {
+	return "#"+filename.replace("/", "\\/").replace(".", "\\.")
+}
+
+var TouchFile = function(filename) {
+	var sel = GetIDSelector(filename)
+	$(sel).addClass("marked")
+}
+
+var UntouchFile = function(filename) {
+	var sel = GetIDSelector(filename)
+	$(sel).removeClass("marked")
+}
+
+var SelectFile = function(filename) {
+	var sel = GetIDSelector(filename)
+	$("#pkgbrowser").jstree("deselect_all")
+	$("#pkgbrowser").jstree("select_node", sel)
+	$("#filebrowser").jstree("deselect_all")
+	$("#filebrowser").jstree("select_node", sel)
+}
+
+
 var ClickFileTree = function(e) {
-	n = $.jstree._focused()._get_node(this)
+	var n = $.jstree._focused()._get_node(this)
+	
 	if (n.attr("dir") == "false") {
-		path = n.attr("path")
-		fileNodes[path] = n
+		var id = n.attr("id")
+		//alert("id is "+id)
+		var path = n.attr("path")
+		//fileNodes[path] = n
 		LoadContents(path)
 		$("#editor").show()
 		$("#pkginfo").hide()
@@ -74,6 +100,7 @@ var ClickFileTree = function(e) {
 		$("#editor").hide()
 		$("#pkginfo").show()
 	}
+	window.location = "/#"
 }
 
 

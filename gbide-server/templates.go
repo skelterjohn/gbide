@@ -19,23 +19,47 @@ var (
 	    </content>
     </item>
 `
+	CompileErrFormat =
+`		<div class="compile-err">
+			<a href='#' onclick="window.opener.document.location.href='/#{Dir}/{File}:{Line}';window.opener.focus()">
+				<div id="file">{File}</div>
+				<div id="line">{Line}</div>
+				<div id="error">{Error}</div>
+			</a>
+		</div>
+`
+	BuildingFormat =
+`		<div class="building">
+			<div id="dir">{Dir}</div>
+			<div id="kind">{Kind}</div>
+			<div id="target>{Target}</div>
+		</div>
+`
+	BuildLineFormat =
+`		<div class="line">{Line}</div>
+`
 )
 
 var (
 	ListFileTemplate = template.MustParse(ListFileFormat, nil)
 	ListDirTemplate = template.MustParse(ListDirFormat, nil)
+	CompileErrTemplate = template.MustParse(CompileErrFormat, nil)
+	BuildingTemplate = template.MustParse(BuildingFormat, nil)
+	BuildLineTemplate = template.MustParse(BuildLineFormat, nil)
 )
 
 const (
 	EditorTemplatePath = "templates/editor.template"
-	BuildTemplatePath = "templates/build.template"
+	BuildBarTemplatePath = "templates/buildbar.template"
 	PkgInfoTemplatePath = "templates/pkginfo.template"
+	BuildTemplatePath = "templates/build.template"
 )
 
 var (
 	EditorT *template.Template
-	BuildT *template.Template
+	BuildBarT *template.Template
 	PkgInfoT *template.Template
+	BuildT *template.Template
 )
 
 func init() {
@@ -43,11 +67,15 @@ func init() {
 	EditorT.SetDelims("{{", "}}")
 	EditorT.ParseFile(EditorTemplatePath)
 	
-	BuildT = template.New(nil)
-	BuildT.SetDelims("{{", "}}")
-	BuildT.ParseFile(BuildTemplatePath)
+	BuildBarT = template.New(nil)
+	BuildBarT.SetDelims("{{", "}}")
+	BuildBarT.ParseFile(BuildBarTemplatePath)
 	
 	PkgInfoT = template.New(nil)
 	PkgInfoT.SetDelims("{{", "}}")
 	PkgInfoT.ParseFile(PkgInfoTemplatePath)
+	
+	BuildT = template.New(nil)
+	BuildT.SetDelims("{{", "}}")
+	BuildT.ParseFile(BuildTemplatePath)
 }

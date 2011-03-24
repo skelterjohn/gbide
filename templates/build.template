@@ -1,18 +1,12 @@
-<center>
+<html lang="en">
 
-<script>
-$(function() {
-	$( "button", ".build-button" ).button();
-	$( "#save" ).click(function() {SaveCurrentContents();});
-	$( "#revert" ).click(function() {RevertCurrentContents();});
-	$( "#build" ).click(function() {BuildPkgs();});
-});
-</script>
+	<link href="/css/build.css" rel="stylesheet" media="all" type="text/css" />
+	
+	<head>
+		<title>gbide build</title>
+	</head>
 
-<div class="build-button">
-<button id="save">Save</button>
-<button id="revert">Revert</button>
-<button id="build">Build</button>
-</div>
-
-</center>
+	<body>
+{{Body}}
+	</body>
+</html> 

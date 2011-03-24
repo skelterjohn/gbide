@@ -12,7 +12,7 @@ html, body {
 
 .col {
     top: 50px;
-    bottom: 50px;
+    bottom: 0px;
     overflow: auto;
 }
 
@@ -23,7 +23,6 @@ html, body {
 
 #browse-col {
     left: 0;
-	bottom: 0px;
 }
 
 #outline-col {
@@ -36,15 +35,9 @@ html, body {
     background: lightgray;
 }
 
-#header, #footer {
+#header {
     height: 50px;
     background: gray;
-}
-
-#footer {
-    left: 200px;
-	right: 0px;
-    bottom: 0;
 }
 
 #header {

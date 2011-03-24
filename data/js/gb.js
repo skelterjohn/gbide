@@ -9,7 +9,7 @@ var ScanWorkspace = function() {
 		"xml_data" : {
 			//"data" : xml
 			"ajax" : {
-			"url" : "/gblist",
+				"url" : "/gblist",
 			},
 		},
 		
@@ -18,9 +18,19 @@ var ScanWorkspace = function() {
 			"selected_parent_close" : "select_parent",
 		},
 							
-		"plugins" : [ "themes", "xml_data", "ui", "contextmenu" ]
-	});	  
-	$("#pkgbrowser").jstree("set_theme","apple");
+		"search" : {
+			
+		},
+							
+		"plugins" : [ "themes", "xml_data", "ui", "contextmenu", "search" ]
+	}).bind("search.jstree", function (e, data) {
+			
+		$("#pkgbrowser").jstree("select_node", $("#gb/gb.go"))
+		alert("Found " + data.rslt.nodes.length + " nodes matching '" + data.rslt.str + "'.");
+	})
+	
+	
+	$("#pkgbrowser").jstree("set_theme","apple")
 	$("#pkgbrowser").jstree("toggle_icons")
 	$("#pkgbrowser").jstree("toggle_dots")
 	
@@ -34,15 +44,22 @@ var BuildSuccess = function(data, textStatus, jqXHR) {
 }
 
 var BuildPkgs = function() {
-	$.ajax({
-		type: "POST",
-		url: "gb",
-		data: {args:"."},
-		context: document.body,
-		success: BuildSuccess
-	});
+	window.open("/build/", "gbide-build")
+}
+
+var BuildPkg = function(pkg) {
+	window.open("/build/"+pkg, "gbide-build")
+}
+
+var LocationHashChanged = function() {
+	tokens = location.hash.split(":")
+	file = tokens[0].substring(1)
+	num = parseInt(tokens[1])
+	LoadContents(file)
+	aceEditor.gotoLine(num)
 }
 
 $(document).ready(function(){
+	window.onhashchange = LocationHashChanged
 	ScanWorkspace()
 });

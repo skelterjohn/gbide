@@ -5,3 +5,6 @@
 .files {
 	font: normal 9pt Monaco;
 }
+li.marked {
+    background-color: orange;
+}

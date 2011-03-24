@@ -18,12 +18,6 @@ var SaveContents = function(filename) {
 
 var currentFile = "";
 var openFiles = {}
-var fileNodes = {}
-var oldColors = {}
-
-var LoadGodoc = function(path) {
-    $("#godoc").html('GODOC for '+path)
-}
 
 var LoadPackageInfo = function(path) {
 	$.ajax({
@@ -33,6 +27,7 @@ var LoadPackageInfo = function(path) {
 		success: function(data, textStatus, jqXHR) {
 			$("#pkginfo").html(data)
 			$("#pkginfo").show()
+		    SelectFile(path)
 		}
 	});
 }
@@ -42,14 +37,15 @@ var EditCallback = function() {
 	if (disableEdit || currentFile == "") {
 		return
 	}
-	oldColors[currentFile] = fileNodes[currentFile].css("background")
-	fileNodes[currentFile].css("background", "orange")
+	TouchFile(currentFile)
+	//oldColors[currentFile] = fileNodes[currentFile].css("background")
+	//fileNodes[currentFile].css("background", "orange")
 }
 
 var lineNumbers = {}
 var LoadDataToEditor = function(data, filename) {
 	
-	
+	SelectFile(filename)
 	
 	currentFile = filename
 	aceEditor.gotoLine(0)
@@ -70,6 +66,18 @@ var RevertCurrentContents = function() {
 }
 
 var LoadContents = function(filename) {
+	if (filename == "") {
+		return
+	}
+	var fileid = GetIDSelector(filename)
+	//alert("LoadContents("+fileid+")")
+	$("#pkgbrowser").jstree("deselect_all")
+	$("#pkgbrowser").jstree("select_node", $("#gb/gb_cgo.go"))
+	
+	
+	
+	//$("#pkgbrowser").jstree("search", filename)
+	
 	disableEdit = true
 	if (currentFile != "") {
 		openFiles[currentFile] = aceEditor.getSession().getValue()
@@ -84,10 +92,13 @@ var LoadContents = function(filename) {
 			url: "load/"+filename,
 			context: document.body,
 			success: function(data, textStatus, jqXHR) {
+			    /*
 			    oldColor = oldColors[filename]
 				if (oldColor != null) {
 					fileNodes[filename].css("background", oldColor)
-				}
+			    }
+			    */
+				UntouchFile(filename)
 				LoadDataToEditor(data, filename)
 			}
 		});

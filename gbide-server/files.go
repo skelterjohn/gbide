@@ -33,6 +33,13 @@ func (this TargetList) Swap(i, j int) {
 	this[i], this[j] = this[j], this[i]
 }
 
+func GetID(filename string) (id string) {
+	id = filename
+	//id = strings.Replace(id, "/", "_", -1)
+	//id = strings.Replace(id, ".", "_", -1)
+	return
+}
+
 func GBListHandler(ctx *web.Context) {
 	args := []string{"gb", "-L"}
 	fmt.Printf("%v\n", args)
@@ -63,7 +70,8 @@ func GBListHandler(ctx *web.Context) {
 			label := fmt.Sprintf(`%s %s`, kind, name)
 			label = dir
 			
-			le := ListEntry{ID:dir, ParentID:"", LongName:dir, ShortName:label}
+			fileID := GetID(dir)
+			le := ListEntry{ID:fileID, ParentID:"", LongName:dir, ShortName:label}
 			
 			targets = append(targets, Target{Head:le})
 			
@@ -74,7 +82,13 @@ func GBListHandler(ctx *web.Context) {
 				continue
 			}
 			src := strings.TrimSpace(line)
-			le := ListEntry{ID:filepath.Join(dir, src), ParentID:dir, LongName:filepath.Join(dir, src), ShortName:src}
+			
+			filename := filepath.Join(dir, src)
+			
+			fileID := GetID(filename)
+			parentID := GetID(dir)
+			
+			le := ListEntry{ID:fileID, ParentID:parentID, LongName:filename, ShortName:src}
 			
 			srcs := targets[len(targets)-1].Srcs
 			srcs = append(srcs, le)
@@ -124,9 +138,10 @@ func ListHandlerXML(ctx *web.Context, dir string) {
 		}
 
 		fullname := path.Join(dir, file.Name)
-		fileID := fullname// strings.Replace(fullname, "/", ":", -1)
+		fileID := GetID(fullname)
+		parentID := GetID(dir)
 		
-		le := ListEntry{ID:fileID, ParentID:dir, LongName:fullname, ShortName:file.Name}
+		le := ListEntry{ID:fileID, ParentID:parentID, LongName:fullname, ShortName:file.Name}
 		if le.ParentID == "." {
 			le.ParentID = ""
 		}

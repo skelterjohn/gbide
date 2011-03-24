@@ -11,6 +11,7 @@ GOFILES=\
 	files.go\
 	gbide-server.go\
 	gbrun.go\
+	godoc.go\
 	pkginfo.go\
 	save.go\
 	templates.go\
