@@ -5,6 +5,12 @@
 .files {
 	font: normal 9pt Monaco;
 }
-li.marked {
+#pkgbrowser .marked {
+    background-color: orange;
+}
+#pkgbrowser .inactive {
+	font-style: italic
+}
+#filebrowser .marked {
     background-color: orange;
 }

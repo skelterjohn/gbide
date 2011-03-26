@@ -32,22 +32,13 @@ var LoadPackageInfo = function(path) {
 	});
 }
 
-disableEdit = false
-var EditCallback = function() {
-	if (disableEdit || currentFile == "") {
-		return
-	}
-	TouchFile(currentFile)
-	//oldColors[currentFile] = fileNodes[currentFile].css("background")
-	//fileNodes[currentFile].css("background", "orange")
-}
-
 var lineNumbers = {}
 var LoadDataToEditor = function(data, filename) {
 	
 	SelectFile(filename)
 	
 	currentFile = filename
+	disableEdit = true
 	aceEditor.gotoLine(0)
 	aceEditor.getSession().setValue(data)
 	if (lineNumbers[filename] == null) {
@@ -71,9 +62,6 @@ var LoadContents = function(filename) {
 	}
 	var fileid = GetIDSelector(filename)
 	//alert("LoadContents("+fileid+")")
-	$("#pkgbrowser").jstree("deselect_all")
-	$("#pkgbrowser").jstree("select_node", $("#gb/gb_cgo.go"))
-	
 	
 	
 	//$("#pkgbrowser").jstree("search", filename)

@@ -1,0 +1,8 @@
+
+.internal {
+	display:inline-block;
+}
+
+.compile-err a {
+	text-decoration:none;
+}

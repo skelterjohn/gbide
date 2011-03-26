@@ -2,6 +2,6 @@ _obj
 bin
 gbide.xcodeproj
 _go_.6
-cmd/gbide/gbide
+gbide-server/gbide-server
 jsdownloads
 README2

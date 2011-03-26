@@ -6,7 +6,7 @@ import (
 
 var (
 	ListFileFormat = 
-`   <item path="{LongName}" dir="false" id="{ID}"{.section ParentID} parent_id="{@}"{.end}>
+`   <item path="{LongName}" class="{Class}" dir="false" id="{ID}"{.section ParentID} parent_id="{@}"{.end}>
 	    <content>
 		    <name>{ShortName}</name>
 	    </content>
@@ -21,18 +21,17 @@ var (
 `
 	CompileErrFormat =
 `		<div class="compile-err">
-			<a href='#' onclick="window.opener.document.location.href='/#{Dir}/{File}:{Line}';window.opener.focus()">
-				<div id="file">{File}</div>
-				<div id="line">{Line}</div>
-				<div id="error">{Error}</div>
+			<a href='#' onclick="goto('{Dir}/{File}', {Line})">
+				<div class="internal" id="file">{File}</div>:<div class="internal" id="line">{Line}</div>
 			</a>
+			<div class="internal" id="error">{Error}</div>
 		</div>
 `
 	BuildingFormat =
 `		<div class="building">
-			<div id="dir">{Dir}</div>
-			<div id="kind">{Kind}</div>
-			<div id="target>{Target}</div>
+			<div class="internal" id="dir">{Dir}</div>
+			<div class="internal" id="kind">{Kind}</div>
+			<div class="internal" id="target>{Target}</div>
 		</div>
 `
 	BuildLineFormat =

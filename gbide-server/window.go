@@ -100,6 +100,7 @@ func RunServer(port int) {
 	web.Get("/", WindowHandle)
 	web.Post("/save/(.*)", SaveHandler)
 	web.Get("/load/(.*)", LoadHandler)
+	web.Get("/rm/(.*)", DeleteHandler)
 	web.Post("/gb", GBHandler)
 	web.Get("/ls/(.*)", ListHandlerXML)
 	web.Get("/gblist", GBListHandler)

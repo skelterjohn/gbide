@@ -2,6 +2,7 @@
 
 	<link href="/css/build.css" rel="stylesheet" media="all" type="text/css" />
 	
+	<script src="/js/build.js" type="text/javascript" charset="utf-8"></script>
 	<head>
 		<title>gbide build</title>
 	</head>

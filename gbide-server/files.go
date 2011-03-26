@@ -15,6 +15,7 @@ import (
 type ListEntry struct {
 	ID, ParentID string
 	LongName, ShortName string
+	Class string
 }
 
 type Target struct {
@@ -78,10 +79,18 @@ func GBListHandler(ctx *web.Context) {
 			
 			//_ = ListDirTemplate.Execute(ctx, le)
 		} else {
+			if strings.HasPrefix(line, "(in") {
+				continue
+			}
 			if len(targets) == 0 {
 				continue
 			}
+			active := true
 			src := strings.TrimSpace(line)
+			if src[0] == '*' {
+				active = false
+				src = src[1:]
+			}
 			
 			filename := filepath.Join(dir, src)
 			
@@ -89,6 +98,9 @@ func GBListHandler(ctx *web.Context) {
 			parentID := GetID(dir)
 			
 			le := ListEntry{ID:fileID, ParentID:parentID, LongName:filename, ShortName:src}
+			if !active {
+				le.Class = "inactive"
+			}
 			
 			srcs := targets[len(targets)-1].Srcs
 			srcs = append(srcs, le)

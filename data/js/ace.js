@@ -2,6 +2,7 @@
 
 
 var aceEditor = null
+
 window.onload = function() {
     aceEditor = ace.edit("editor");
 	aceEditor.setTheme("ace/theme/clouds");
@@ -9,4 +10,4 @@ window.onload = function() {
     aceEditor.getSession().setMode(new mode());
 	
 	aceEditor.getSession().on('change', EditCallback);
-};
+}

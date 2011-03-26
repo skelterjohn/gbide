@@ -21,6 +21,13 @@ func SaveHandler(ctx *web.Context, filename string) (code string) {
 	return
 }
 
+
+func DeleteHandler(ctx *web.Context, filename string) (code string) {
+	err := os.RemoveAll(filename)
+	code = err.String()
+	return
+}
+
 func LoadHandler(ctx *web.Context, filename string) {
 	var fin *os.File
 	var err os.Error
